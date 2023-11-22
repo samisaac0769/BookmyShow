@@ -1,0 +1,158 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    color: #333;
+    font-family: Roboto, sans-serif;
+}
+
+.navfirst {
+
+    background: rgb(51, 53, 69);
+    padding: 0px;
+    box-shadow: none;
+    color: aliceblue;
+
+}
+
+.navfirstbox {
+    width: 91%;
+    height: 64px;
+    margin: 0px auto;
+}
+
+.searchArea {
+    margin-left: 20px;
+    position: relative;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.searchArea span {
+    top: 7px;
+    left: 13px;
+    position: absolute;
+}
+
+.searchArea input {
+    padding: 5px;
+    width: 550px;
+    padding-left: 45px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+}
+
+.search::placeholder {
+    font-size: 14px;
+    color: #999999;
+}
+
+.down {
+    color: #f1e8e8 !important;
+}
+
+.location {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(204, 204, 204);
+}
+
+.profile-Pic {
+    border: 1px solid;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+}
+
+.profile {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-indent: -9999px;
+    border: 1px solid rgb(255, 255, 255);
+    display: block;
+}
+
+.signUp {
+    margin-top: 2px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(248, 68, 100);
+    font-size: 12px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    border-radius: 4px;
+    border: 1px solid rgb(248, 68, 100);
+    display: block;
+    padding: 0 13px;
+}
+
+.navsecond {
+    width: 100%;
+    background: rgb(31, 37, 51);
+    color: #CCCCCC;
+    font-size: 14PX;
+    height: 40px;
+}
+
+.navsecondbox {
+    width: 91%;
+    margin: 0px auto;
+}
+
+.bYfeWy {
+    padding: 0px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-decoration: none;
+    font-weight: 400;
+    color: rgb(204, 204, 204);
+}
+
+.gXOPeC {
+    margin-top: 10px;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 0px 10px;
+    text-decoration: none;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+}
+
+.login-page-title {
+    flex: 1 1 0%;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: center;
+    text-transform: none;
+    color: rgb(91 91 91);
+}
+
+.menu-icon {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.menu-icon span {
+    color: #999999;
+}
+
+.user-name{
+    margin-top: 5px;
+    padding-left: 12px;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.login-credencial{
+    border:1px solid;
+    padding: 10px;
+}
