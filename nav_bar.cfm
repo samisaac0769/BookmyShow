@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="CSS/bootstrap-css.css" rel="stylesheet">
     <script src="JavaScript/bootstrap-js.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <link href="CSS/Googleicon.css" rel="stylesheet">
     <link href="CSS/nav_bar.css" rel="stylesheet">
+    <script src="JavaScript/nav.js"></script>
 </head>
 <body>
     <header class="">
@@ -29,25 +31,74 @@
                     <div class="d-flex mt-1">
                         <cfset session.login = "">
                         <cfif session.login eq "">
-                            <button type="button" Class="signUp me-4" data-bs-toggle="modal" data-bs-target="#myModal">Sign in</button>
-                            <div class="modal fade " id="myModal" role="dialog" data-backdrop="static">
+                            <button type="button" id="signin" Class="signUp me-4" data-bs-toggle="modal" data-bs-target="#myModal">Sign in</button>
+                            <div class="modal fade" id="myModal" role="dialog" data-bs-backdrop="static">
                                 <div class="modal-dialog text-center">
                                     <!-- Modal content-->
-                                    <div class="modal-content">
+                                    <div class="modal-content loginForm" id="loginFormContent">
                                         <div class="modal-header border border-0 p-4">
                                             <div class="login-page-title">Get Started</div>
-                                            <button type="button" class="btn-close btn-outline-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <button type="button" class="btn-close" id="loginclose" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <div class="px-5 text-black">
+                                        <div class="px-5 text-black d-flex flex-column  ">
                                             <div class="d-flex flex-column gap-2">
-                                                <form class="d-flex flex-column gap-2">
-                                                    <div class="login-credencial">dsf</div>
-                                                    <div class="login-credencial">fsdf</div>
-                                                    <div class="login-credencial">dsf</div>
+                                                <form class="d-flex flex-column gap-4">
+                                                    <div class="login-credencial fPrBPf" id="googleLogin" type="button">
+                                                        <span class="bwc__sc-dh558f-13 bPjxSZ"><img alt="google logo" src="//in.bmscdn.com/webin/common/icons/googlelogo.svg"></span>
+                                                        <span>Continue with Google</span>
+                                                    </div>
+                                                    <div class="login-credencial fPrBPf" id="gmailLogin" type="button">
+                                                        <span class="bwc__sc-dh558f-13 bPjxSZ"><img alt="email logo" src="//in.bmscdn.com/webin/common/icons/email.svg"></span>
+                                                        <span>Continue with Email</span>
+                                                    </div>
+                                                    <div class="login-credencial fPrBPf" id="appleLogin" type="button">
+                                                        <span class="bwc__sc-dh558f-13 bPjxSZ"><svg width="19" xmlns="http://www.w3.org/2000/svg" height="19" viewBox="0 0 170 170" aria-labelledby="apple-label" role="img"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.197-2.12-9.973-3.17-14.34-3.17-4.58 0-9.492 1.05-14.746 3.17-5.262 2.13-9.501 3.24-12.742 3.35-4.929.21-9.842-1.96-14.746-6.52-3.13-2.73-7.045-7.41-11.735-14.04-5.032-7.08-9.169-15.29-12.41-24.65-3.471-10.11-5.211-19.9-5.211-29.378 0-10.857 2.346-20.221 7.045-28.068 3.693-6.303 8.606-11.275 14.755-14.925s12.793-5.51 19.948-5.629c3.915 0 9.049 1.211 15.429 3.591 6.362 2.388 10.447 3.599 12.238 3.599 1.339 0 5.877-1.416 13.57-4.239 7.275-2.618 13.415-3.702 18.445-3.275 13.63 1.1 23.87 6.473 30.68 16.153-12.19 7.386-18.22 17.731-18.1 31.002.11 10.337 3.86 18.939 11.23 25.769 3.34 3.17 7.07 5.62 11.22 7.36-.9 2.61-1.85 5.11-2.86 7.51zM119.11 7.24c0 8.102-2.96 15.667-8.86 22.669-7.12 8.324-15.732 13.134-25.071 12.375a25.222 25.222 0 0 1-.188-3.07c0-7.778 3.386-16.102 9.399-22.908 3.002-3.446 6.82-6.311 11.45-8.597 4.62-2.252 8.99-3.497 13.1-3.71.12 1.083.17 2.166.17 3.24z"></path></svg></span>
+                                                        <span>Continue with Apple</span>
+                                                    </div>
                                                 </form>
-                                                <div class="">OR</div>
+                                                <div class="or">OR</div>
                                             </div>
-
+                                            <form class="hmgVIc ">
+                                                <div class=" py-4 d-flex phoneLogin or ">
+                                                    <div class="flag"><img alt="indian flag" src="//in.bmscdn.com/webin/common/icons/indianflag.svg"></div>
+                                                    <span class="countryCode" id="countryCode">+91</span>
+                                                    <input id="mobileNo" type="text"  maxlength="10"  placeholder="Enter the mobile number" class="phoneInput">
+                                                </div>
+                                                <div class=""></div>
+                                                
+                                                <div class="py-4 pb-5 agreement">I agree to the 
+                                                    <a href="/terms-and-conditions" target="_blank" color="DIMGRAY" class="bwc__sc-dh558f-36 hsNZXc">Terms &amp; Conditions</a> 
+                                                    &amp; <a href="/privacy" target="_blank" color="DIMGRAY" class="bwc__sc-dh558f-36 hsNZXc">Privacy Policy</a>
+                                                </div>
+                                                <button class="my-4 btn-continue" type="submit" id="countinue" disabled>Continue</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div  class="modal-content loginForm" id="loginOtpContent">
+                                        <div class="backarrow">
+                                            <div>
+                                                <svg type="button" width="16" height="13" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><title>Go back</title><path d="M72.7,0c1.9,0.1,3.6,1.2,4.6,3.3s0.7,4.2-0.8,6.1c-0.2,0.2-0.4,0.4-0.6,0.6c-5.1,5.1-10.2,10.2-15.3,15.4
+                                                    c-7,7-13.9,14-20.9,21c-2.2,2.2-2.2,5.2,0,7.4C51.8,65.9,63.8,77.9,75.9,90c1.3,1.3,2.1,2.7,2.1,4.5c-0.1,2.3-1.2,4.1-3.3,5
+                                                    c-2.1,1-4.1,0.6-5.9-0.8c-0.3-0.2-0.5-0.5-0.8-0.7C53.2,83.2,38.5,68.5,23.8,53.8c-2.4-2.4-2.3-5.2,0-7.6c4-4,7.9-8,11.9-12
+                                                    C44.5,25.4,53.3,16.6,62,7.8c2-2,4-4,6-6C69.2,0.7,70.6,0,72.7,0z"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="px-5 py-4">
+                                            <div class="otp-head">
+                                                Verify your Mobile Number
+                                            </div>
+                                            <div class="otp-sent">
+                                                Enter OTP sent to <span>+91 8300833265</span>
+                                            </div>
+                                            <div class="d-flex">
+                                                <input type="text" class="jLBVFy" maxlength="1" onkeypress="handleInput(this, event)" onkeydown="handleBackspace(this, event)">
+                                                <input type="text" class="jLBVFy" maxlength="1" onkeypress="handleInput(this, event)" onkeydown="handleBackspace(this, event)">
+                                                <input type="text" class="jLBVFy" maxlength="1" onkeypress="handleInput(this, event)" onkeydown="handleBackspace(this, event)">
+                                                <input type="text" class="jLBVFy" maxlength="1" onkeypress="handleInput(this, event)" onkeydown="handleBackspace(this, event)">
+                                                <input type="text" class="jLBVFy" maxlength="1" onkeypress="handleInput(this, event)" onkeydown="handleBackspace(this, event)">
+                                                <input type="text" class="jLBVFy" maxlength="1" onkeypress="handleInput(this, event)" onkeydown="handleBackspace(this, event)">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -69,18 +120,18 @@
         <div class="navsecond">
             <div class="navsecondbox d-flex justify-content-between">
                 <div class="d-flex align-items-center">
-                    <a href="/explore/movies-trivandrum" class="bYfeWy">Movies</a>
-                    <a href="/explore/c/stream" class="bYfeWy">Stream</a>
-                    <a href="/explore/events-trivandrum" class="bYfeWy">Events</a>
-                    <a href="/explore/plays-trivandrum" class="bYfeWy">Plays</a>
-                    <a href="/explore/sports-trivandrum" class="bYfeWy">Sports</a>
-                    <a href="/explore/activities-trivandrum" class="bYfeWy">Activities</a>
+                    <a href="" class="bYfeWy">Movies</a>
+                    <a href="" class="bYfeWy">Stream</a>
+                    <a href="" class="bYfeWy">Events</a>
+                    <a href="" class="bYfeWy">Plays</a>
+                    <a href="" class="bYfeWy">Sports</a>
+                    <a href="" class="bYfeWy">Activities</a>
                 </div>
                 <div class="d-flex align-items-center">
-                    <a href="/list-your-show/" class="gXOPeC">ListYourShow</a>
-                    <a href="/voucher" class="gXOPeC">Corporates</a>
-                    <a href="/offers" class="gXOPeC">Offers</a>
-                    <a href="/giftcards" class="gXOPeC">Gift Cards</a>
+                    <a href="" class="gXOPeC">ListYourShow</a>
+                    <a href="" class="gXOPeC">Corporates</a>
+                    <a href="" class="gXOPeC">Offers</a>
+                    <a href="" class="gXOPeC">Gift Cards</a>
                 </div>
             </div>
         </div>
