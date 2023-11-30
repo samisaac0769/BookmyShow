@@ -292,3 +292,30 @@ a {
 .jLBVFy:focus {
     border: 1px solid rgb(220, 53, 88);
 }
+
+.otp{
+    flex: 1 1 0%;
+}
+
+.otpTimer{
+}
+
+.hide{
+    visibility: hidden;    
+}
+
+/* .otpField input::-webkit-inner-spin-button,
+.otpField input::-webkit-outer-spin-button{
+    display: none;
+} */
+
+.otpError{
+    color: red;
+    font-size: 13px;
+}
+.otpResend{
+    border: none;
+    outline: none;
+    color: #DC3558;
+    padding: 0 5px;
+}
