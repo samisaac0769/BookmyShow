@@ -56,7 +56,7 @@
                                                         <span>Continue with Apple</span>
                                                     </div>
                                                 </form>
-                                                <div class="or">OR</div>
+                                                <div class="or">OR</div>    
                                             </div>
                                             <form class="hmgVIc ">
                                                 <div class=" py-4 d-flex phoneLogin or ">
@@ -76,7 +76,7 @@
                                     </div>
                                     <div  class="modal-content loginForm" id="loginOtpContent">
                                         <div class="backarrow">
-                                            <div>
+                                            <div id="loginBack">
                                                 <svg type="button" width="16" height="13" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><title>Go back</title><path d="M72.7,0c1.9,0.1,3.6,1.2,4.6,3.3s0.7,4.2-0.8,6.1c-0.2,0.2-0.4,0.4-0.6,0.6c-5.1,5.1-10.2,10.2-15.3,15.4
                                                     c-7,7-13.9,14-20.9,21c-2.2,2.2-2.2,5.2,0,7.4C51.8,65.9,63.8,77.9,75.9,90c1.3,1.3,2.1,2.7,2.1,4.5c-0.1,2.3-1.2,4.1-3.3,5
                                                     c-2.1,1-4.1,0.6-5.9-0.8c-0.3-0.2-0.5-0.5-0.8-0.7C53.2,83.2,38.5,68.5,23.8,53.8c-2.4-2.4-2.3-5.2,0-7.6c4-4,7.9-8,11.9-12
@@ -84,20 +84,30 @@
                                                 </svg>
                                             </div>
                                         </div>
-                                        <div class="px-5 py-4">
-                                            <div class="otp-head">
-                                                Verify your Mobile Number
+                                        <div class="d-flex flex-column gap-5">
+                                            <div class="px-5 py-4 otp mb-5">
+                                                <div class="otp-head">
+                                                    Verify your Mobile Number
+                                                </div>
+                                                <div class="otp-sent">
+                                                    Enter OTP sent to <span>+91 8300833265</span>
+                                                </div>
+                                                <div class="d-flex otpField">
+                                                    <input type="tel" id="otp1" class="jLBVFy" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this, event)">
+                                                    <input type="tel" id="otp2" class="jLBVFy" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this, event)">
+                                                    <input type="tel" id="otp3" class="jLBVFy" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this, event)">
+                                                    <input type="tel" id="otp4" class="jLBVFy" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this, event)">
+                                                    <input type="tel" id="otp5" class="jLBVFy" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this, event)">
+                                                    <input type="tel" id="otp6" class="jLBVFy" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this, event)">
+                                                </div>
+                                                <div  class="py-4 text-start">
+                                                <span class="otpError" id="otpError"></span>
+                                                </div>
                                             </div>
-                                            <div class="otp-sent">
-                                                Enter OTP sent to <span>+91 8300833265</span>
-                                            </div>
-                                            <div class="d-flex">
-                                                <input type="text" class="jLBVFy" maxlength="1" onkeypress="handleInput(this, event)" onkeydown="handleBackspace(this, event)">
-                                                <input type="text" class="jLBVFy" maxlength="1" onkeypress="handleInput(this, event)" onkeydown="handleBackspace(this, event)">
-                                                <input type="text" class="jLBVFy" maxlength="1" onkeypress="handleInput(this, event)" onkeydown="handleBackspace(this, event)">
-                                                <input type="text" class="jLBVFy" maxlength="1" onkeypress="handleInput(this, event)" onkeydown="handleBackspace(this, event)">
-                                                <input type="text" class="jLBVFy" maxlength="1" onkeypress="handleInput(this, event)" onkeydown="handleBackspace(this, event)">
-                                                <input type="text" class="jLBVFy" maxlength="1" onkeypress="handleInput(this, event)" onkeydown="handleBackspace(this, event)">
+                                            <div class="px-5 pb-4 mt-5">
+                                                <span class="otpTimer agreement" id="timer"></span>
+                                                <span class="otpTimer agreement" id="resent">Didn't receive OTP?<button class="otpResend" id="otpResend" type="button">Resend OTP!</button> </span>
+                                                <button class="my-4 btn-continue hide" type="button" id="secCountinue">Continue</button>
                                             </div>
                                         </div>
                                     </div>
