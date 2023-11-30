@@ -1,6 +1,5 @@
 var interval;
-
-let otp;
+var  otp;
 
 $(document).ready(function () {
     $("#loginOtpContent").hide();
@@ -40,8 +39,6 @@ $(document).ready(function () {
     document.getElementById("secCountinue").setAttribute("disabled", "disabled");
     $("#countinue").on("click", function (e) {
         e.preventDefault();
-        
-        
         // Toggle the visibility of the two modal contents
         $("#loginFormContent").toggle();
         $("#loginOtpContent").toggle();
@@ -51,18 +48,14 @@ $(document).ready(function () {
         let otp = otpGenerater();
         startCountdown();
         otpValidation(otp);
-        
-
     });
 
     $('#loginBack').click(function (e) {
-            e.preventDefault();
-
+        e.preventDefault();
         // Toggle the visibility of the two modal contents
         $("#loginFormContent").toggle();
         $("#loginOtpContent").toggle();
-
-        // // Clear the interval
+        // Clear the interval
         clearInterval(interval);
 
         $("#mobileNo").val(''); 
@@ -71,8 +64,7 @@ $(document).ready(function () {
     });
 
     $('#otpResend').on("click", function () {
-        //$('#otpError').text("");
-        clearInterval(interval); // Stop the current countdown
+        clearInterval(interval); 
         $('#otp1').focus();
         let otp = otpGenerater();
         startCountdown();
@@ -84,12 +76,26 @@ $(document).ready(function () {
         let inputOTP = $("#otp1").val() + $("#otp2").val() + $("#otp3").val() + $("#otp4").val() + $("#otp5").val() + $("#otp6").val();
         if (inputOTP.trim() == otp) {
             clearInterval(interval);
-            $('#otpError').text("");
-            $('.jLBVFy').val("");
-            $("#loginFormContent").toggle();
-            $("#loginOtpContent").toggle();
-            alert("success")
-            $('#myModal').modal('hide')
+            let phoneNumber = $("#mobileNo").val();
+            $.ajax({
+                url: "Components/nav_bar.cfc?method=signup",
+                type: "post",
+                data: {
+                    loginNumber: phoneNumber
+                },
+                success: function (data) {
+                    // console.log(data);
+                    // alert("success")
+                    $('#otpError').text("");
+                    $('.jLBVFy').val("");
+                    $("#loginFormContent").toggle();
+                    $("#loginOtpContent").toggle();
+                    $('#myModal').modal('hide')
+                    document.location.href = 'demo.cfm';
+                }
+            });
+
+            
         }
         else {
             $('.jLBVFy').val("");
@@ -185,8 +191,6 @@ function handleBackspace(currentInput, event) {
         }
     }
 }
-
-
 
 // function handleBackspace(currentInput, event) {
 //     // Prevent backspace from moving to the previous input unless the current input is empty
