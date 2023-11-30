@@ -29,8 +29,7 @@
                         <span class="material-symbols-outlined down">arrow_drop_down</span>
                     </div>
                     <div class="d-flex mt-1">
-                        <cfset session.login = "">
-                        <cfif session.login eq "">
+                        <cfif session.loginid eq "">
                             <button type="button" id="signin" Class="signUp me-4" data-bs-toggle="modal" data-bs-target="#myModal">Sign in</button>
                             <div class="modal fade" id="myModal" role="dialog" data-bs-backdrop="static">
                                 <div class="modal-dialog text-center">
@@ -113,7 +112,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="menu-icon" type="button"><span class="material-symbols-outlined  fs-3">menu</span></button>
+                            <button class="menu-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="material-symbols-outlined   fs-3">menu</span></button>
+
+                            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                                <div class="offcanvas-header">
+                                    <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+                                    <!---<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>--->
+                                </div>
+                                <div class="offcanvas-body">
+                                    ...
+                                </div>
+                            </div>
                         <cfelse>
                             <div class="d-flex">
                                 <cfoutput>
