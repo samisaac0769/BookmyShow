@@ -1,5 +1,5 @@
 var interval;
-var  otp;
+var otp;
 
 $(document).ready(function () {
     $("#loginOtpContent").hide();
@@ -40,8 +40,11 @@ $(document).ready(function () {
     $("#countinue").on("click", function (e) {
         e.preventDefault();
         // Toggle the visibility of the two modal contents
-        $("#loginFormContent").toggle();
-        $("#loginOtpContent").toggle();
+
+        $("#loginFormContent").hide();
+        $("#loginOtpContent").show();
+        // $("#loginFormContent").toggle();
+        // $("#loginOtpContent").toggle();
 
         $('#otp1').focus();
         clearInterval(interval);
@@ -53,18 +56,21 @@ $(document).ready(function () {
     $('#loginBack').click(function (e) {
         e.preventDefault();
         // Toggle the visibility of the two modal contents
-        $("#loginFormContent").toggle();
-        $("#loginOtpContent").toggle();
+        // $("#loginFormContent").toggle();
+        // $("#loginOtpContent").toggle();
+
+        $("#loginOtpContent").hide();
+        $("#loginFormContent").show();
         // Clear the interval
         clearInterval(interval);
 
-        $("#mobileNo").val(''); 
+        $("#mobileNo").val('');
         $('#countinue').prop('disabled', true);
         $('#countinue').css('background-color', 'rgb(204, 204, 204)');
     });
 
     $('#otpResend').on("click", function () {
-        clearInterval(interval); 
+        clearInterval(interval);
         $('#otp1').focus();
         let otp = otpGenerater();
         startCountdown();
@@ -78,24 +84,51 @@ $(document).ready(function () {
             clearInterval(interval);
             let phoneNumber = $("#mobileNo").val();
             $.ajax({
-                url: "Components/nav_bar.cfc?method=signup",
+                url: "Components/nav_bar.cfc?method=login",
                 type: "post",
                 data: {
                     loginNumber: phoneNumber
                 },
                 success: function (data) {
                     // console.log(data);
-                    // alert("success")
-                    $('#otpError').text("");
-                    $('.jLBVFy').val("");
-                    $("#loginFormContent").toggle();
-                    $("#loginOtpContent").toggle();
-                    $('#myModal').modal('hide')
-                    document.location.href = 'demo.cfm';
+                    let result = $(data).find("string").text();
+                    //alert(result);
+                    
+                    if (result == "true") {
+                        $('#otpError').text("");
+                        $('.jLBVFy').val("");
+                        $("#loginFormContent").toggle();
+                        $("#loginOtpContent").toggle();
+                        $('#myModal').modal('hide');
+                        // $('.admin-btn').css("display", "none");
+                        // $('.userLoged').css("display", "block");
+                        document.location.href = 'firstpage.cfm';
+                    }
+                    // else if (result == "2") {
+                    //     $('#otpError').text("");
+                    //     $('.jLBVFy').val("");
+                    //     $("#loginFormContent").toggle();
+                    //     $("#loginOtpContent").toggle();
+                    //     $('#myModal').modal('hide');
+                    //     $('.userLoged').css("display", "none");
+                    //     $('.admin-btn').css("display", "block");
+                    //     document.location.href = 'demo.cfm';
+                    // }
+                    else {
+                        // alert("You ve");
+                        // document.location.href = 'demo.cfm';
+                        $('#myModal').modal('hide');
+                        $('#otpError').text("");
+                        $('.jLBVFy').val("");
+                        $('#mobileNo').val("");
+                        $("#loginFormContent").toggle();
+                        $("#loginOtpContent").toggle();
+                        $('#signInModal').modal('show');
+                    }
                 }
             });
 
-            
+
         }
         else {
             $('.jLBVFy').val("");
@@ -111,6 +144,41 @@ $(document).ready(function () {
         }
     });
 
+    $("#signInFrom").on("click", function (e) {
+        var username = document.getElementById('signName').value.trim();
+        var phone = document.getElementById('signphone').value.trim();
+        var email = document.getElementById('sign').value.trim();
+        var role = document.getElementById('roleid').value.trim();
+        let valid = validateForm(e);
+        if (valid == true) {
+            
+            $.ajax({
+                url: "Components/nav_bar.cfc?method=signIn",
+                type: "post",
+                data: {
+                    userName: username,
+                    phoneNo: phone,
+                    emailId: email,
+                    roleId: role
+                },
+                success: function (data) {
+                    // console.log(data);
+                    let result = $(data).find("boolean").attr("value");
+                    //alert(result);
+
+                    if (result == "false") {
+                        alert("User Registered Successfully....");
+                    }
+                    else {
+                        alert("User Aleady Exist");
+                    }
+                }
+            });
+        }
+        
+    })
+    
+    
 });
 
 function startCountdown() {
@@ -118,11 +186,11 @@ function startCountdown() {
     //clearInterval(interval);
     var countdown = 30; // 60 seconds = 1 minute
     var timeDisplay = document.getElementById("timer");
-    
+
     function updateCountdown() {
         if (countdown > 0) {
             $('#timer').show();
-           // timeDisplay.textContent = "Expect OTP in  " + countdown + " seconds";
+            // timeDisplay.textContent = "Expect OTP in  " + countdown + " seconds";
             timeDisplay.innerHTML = "Expect OTP in <span style='font-weight: bold;'>" + countdown + "</span> seconds";
             countdown--;
         } else {
@@ -135,7 +203,7 @@ function startCountdown() {
     }
 
     updateCountdown();
-     interval = setInterval(updateCountdown, 1000); // Update every second
+    interval = setInterval(updateCountdown, 1000); // Update every second
 
     // Return the countdown value
     return countdown;
@@ -207,5 +275,123 @@ function otpGenerater() {
     alert(otp)
     return otp;
 }
+
+//Signup forms validation
+function numberCheck(e) {
+    var x = e.which || e.keyCode;
+
+    // Allow backspace (8) and delete (46)
+    if (x === 8 || x === 46) {
+        return true;
+    }
+
+    // Allow numeric keys (0-9) from the main keyboard and numeric keypad
+    if ((x >= 48 && x <= 57) || (x >= 96 && x <= 105)) {
+        return true;
+    } else {
+        e.preventDefault();
+        return false;
+    }
+}
+
+function nameCheck(e) {
+    var key = e.key;
+
+    // Allow backspace (8) and delete (46)
+    if (key === 'Backspace' || key === 'Delete') {
+        return true;
+    }
+
+    // Allow letters (A-Z, both uppercase and lowercase) and space
+    if ((key >= 'A' && key <= 'Z') || (key >= 'a' && key <= 'z') || key === ' ') {
+        return true;
+    } else {
+        e.preventDefault();
+        return false;
+    }
+}
+
+function mailValidation(element) {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/;
+
+    if (emailRegex.test(element.value)) {
+        $("#mailerror").text("");
+        return true;
+    } else {
+        $("#mailerror").text("Invalid email address");
+        return false;
+    }
+}
+
+function nameValidation() {
+    var username = document.getElementById('signName').value.trim();
+
+    if (username == "") {
+        $("#namerror").text("Name Required");
+        return false
+    }
+    else {
+        $("#namerror").text("");
+        return true;
+    }
+}
+
+function phoneValidation() {
+    var phone = document.getElementById('signphone').value.trim();
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (phone == "") {
+        $("#numberror").text("Phone Number Required");
+        return false;
+    }
+    else if (!phoneRegex.test(phone)) {
+        $("#numberror").text("Invalid phone number");
+        return false;
+    }
+    else {
+        $("#numberror").text("");
+        return true;
+    }
+}
+
+function mailIdValidation() {
+    var email = document.getElementById('sign').value.trim();
+
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/;
+
+    if (email == "") {
+        $("#mailerror").text("Email address Required");
+        return false;
+    }
+    else if (!emailRegex.test(email)) {
+        $("#mailerror").text("Invalid email address");
+        return false;
+    }
+    else {
+        $("#mailerror").text("");
+        return true;
+    }
+}
+
+function validateForm(e) {
+    
+
+
+    var isname = nameValidation();
+    var isphone = phoneValidation();
+    var ismail = mailIdValidation();
+
+    if (isname && isphone && ismail) {
+        return true;
+    }
+    else {
+        e.preventDefault();
+        return false
+    }
+}
+
+
+
+
+
 
 

@@ -8,7 +8,9 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <link href="CSS/Googleicon.css" rel="stylesheet">
     <link href="CSS/nav_bar.css" rel="stylesheet">
+    <link href="CSS/offcanvas.css" rel="stylesheet">
     <script src="JavaScript/nav.js"></script>
+    <script src="JavaScript/offcanvas.js"></script>
 </head>
 <body>
     <header class="">
@@ -28,110 +30,170 @@
                         <span class="location">Location</span>
                         <span class="material-symbols-outlined down">arrow_drop_down</span>
                     </div>
-                    <div class="d-flex mt-1">
-                        <cfif session.loginid eq "">
-                            <button type="button" id="signin" Class="signUp me-4" data-bs-toggle="modal" data-bs-target="#myModal">Sign in</button>
-                            <div class="modal fade" id="myModal" role="dialog" data-bs-backdrop="static">
-                                <div class="modal-dialog text-center">
-                                    <!-- Modal content-->
-                                    <div class="modal-content loginForm" id="loginFormContent">
-                                        <div class="modal-header border border-0 p-4">
-                                            <div class="login-page-title">Get Started</div>
-                                            <button type="button" class="btn-close" id="loginclose" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="px-5 text-black d-flex flex-column  ">
-                                            <div class="d-flex flex-column gap-2">
-                                                <form class="d-flex flex-column gap-4">
-                                                    <div class="login-credencial fPrBPf" id="googleLogin" type="button">
-                                                        <span class="bwc__sc-dh558f-13 bPjxSZ"><img alt="google logo" src="//in.bmscdn.com/webin/common/icons/googlelogo.svg"></span>
-                                                        <span>Continue with Google</span>
+                    <div>
+                        <cfif session.login eq "">
+                            <div class="userSignup">
+                                <div class="d-flex mt-1">
+                                    <button type="button" id="signin" Class="signUp me-4" data-bs-toggle="modal" data-bs-target="#myModal">Login</button>
+                                    <div class="modal fade" id="myModal" role="dialog" data-bs-backdrop="static">
+                                        <div class="modal-dialog text-center">
+                                            <!-- Modal content-->
+                                            <div class="modal-content loginForm" id="loginFormContent">
+                                                <div class="modal-header border border-0 p-4">
+                                                    <div class="login-page-title">Get Started</div>
+                                                    <button type="button" class="btn-close" id="loginclose" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="px-5 text-black d-flex flex-column  ">
+                                                    <div class="d-flex flex-column gap-2">
+                                                        <form class="d-flex flex-column gap-4">
+                                                            <div class="login-credencial fPrBPf" id="googleLogin" type="button">
+                                                                <span class="bwc__sc-dh558f-13 bPjxSZ"><img alt="google logo" src="//in.bmscdn.com/webin/common/icons/googlelogo.svg"></span>
+                                                                <span>Continue with Google</span>
+                                                            </div>
+                                                            <div class="login-credencial fPrBPf" id="gmailLogin" type="button">
+                                                                <span class="bwc__sc-dh558f-13 bPjxSZ"><img alt="email logo" src="//in.bmscdn.com/webin/common/icons/email.svg"></span>
+                                                                <span>Continue with Email</span>
+                                                            </div>
+                                                            <div class="login-credencial fPrBPf" id="appleLogin" type="button">
+                                                                <span class="bwc__sc-dh558f-13 bPjxSZ"><svg width="19" xmlns="http://www.w3.org/2000/svg" height="19" viewBox="0 0 170 170" aria-labelledby="apple-label" role="img"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.197-2.12-9.973-3.17-14.34-3.17-4.58 0-9.492 1.05-14.746 3.17-5.262 2.13-9.501 3.24-12.742 3.35-4.929.21-9.842-1.96-14.746-6.52-3.13-2.73-7.045-7.41-11.735-14.04-5.032-7.08-9.169-15.29-12.41-24.65-3.471-10.11-5.211-19.9-5.211-29.378 0-10.857 2.346-20.221 7.045-28.068 3.693-6.303 8.606-11.275 14.755-14.925s12.793-5.51 19.948-5.629c3.915 0 9.049 1.211 15.429 3.591 6.362 2.388 10.447 3.599 12.238 3.599 1.339 0 5.877-1.416 13.57-4.239 7.275-2.618 13.415-3.702 18.445-3.275 13.63 1.1 23.87 6.473 30.68 16.153-12.19 7.386-18.22 17.731-18.1 31.002.11 10.337 3.86 18.939 11.23 25.769 3.34 3.17 7.07 5.62 11.22 7.36-.9 2.61-1.85 5.11-2.86 7.51zM119.11 7.24c0 8.102-2.96 15.667-8.86 22.669-7.12 8.324-15.732 13.134-25.071 12.375a25.222 25.222 0 0 1-.188-3.07c0-7.778 3.386-16.102 9.399-22.908 3.002-3.446 6.82-6.311 11.45-8.597 4.62-2.252 8.99-3.497 13.1-3.71.12 1.083.17 2.166.17 3.24z"></path></svg></span>
+                                                                <span>Continue with Apple</span>
+                                                            </div>
+                                                        </form>
+                                                        <div class="or">OR</div>    
                                                     </div>
-                                                    <div class="login-credencial fPrBPf" id="gmailLogin" type="button">
-                                                        <span class="bwc__sc-dh558f-13 bPjxSZ"><img alt="email logo" src="//in.bmscdn.com/webin/common/icons/email.svg"></span>
-                                                        <span>Continue with Email</span>
+                                                    <form class="hmgVIc ">
+                                                        <div class=" py-4 d-flex phoneLogin or ">
+                                                            <div class="flag"><img alt="indian flag" src="//in.bmscdn.com/webin/common/icons/indianflag.svg"></div>
+                                                            <span class="countryCode" id="countryCode">+91</span>
+                                                            <input id="mobileNo" type="text"  maxlength="10"  placeholder="Enter the mobile number" class="phoneInput">
+                                                        </div>                                                
+                                                        <div class="py-4 pb-5 agreement">I agree to the 
+                                                            <a href="/terms-and-conditions" target="_blank" color="DIMGRAY" class="bwc__sc-dh558f-36 hsNZXc">Terms &amp; Conditions</a> 
+                                                            &amp; <a href="/privacy" target="_blank" color="DIMGRAY" class="bwc__sc-dh558f-36 hsNZXc">Privacy Policy</a>
+                                                        </div>
+                                                        <button class="my-4 btn-continue" type="submit" id="countinue" disabled>Continue</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div  class="modal-content loginForm" id="loginOtpContent">
+                                                <div class="backarrow">
+                                                    <div id="loginBack">
+                                                        <svg type="button" width="16" height="13" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><title>Go back</title><path d="M72.7,0c1.9,0.1,3.6,1.2,4.6,3.3s0.7,4.2-0.8,6.1c-0.2,0.2-0.4,0.4-0.6,0.6c-5.1,5.1-10.2,10.2-15.3,15.4
+                                                            c-7,7-13.9,14-20.9,21c-2.2,2.2-2.2,5.2,0,7.4C51.8,65.9,63.8,77.9,75.9,90c1.3,1.3,2.1,2.7,2.1,4.5c-0.1,2.3-1.2,4.1-3.3,5
+                                                            c-2.1,1-4.1,0.6-5.9-0.8c-0.3-0.2-0.5-0.5-0.8-0.7C53.2,83.2,38.5,68.5,23.8,53.8c-2.4-2.4-2.3-5.2,0-7.6c4-4,7.9-8,11.9-12
+                                                            C44.5,25.4,53.3,16.6,62,7.8c2-2,4-4,6-6C69.2,0.7,70.6,0,72.7,0z"></path>
+                                                        </svg>
                                                     </div>
-                                                    <div class="login-credencial fPrBPf" id="appleLogin" type="button">
-                                                        <span class="bwc__sc-dh558f-13 bPjxSZ"><svg width="19" xmlns="http://www.w3.org/2000/svg" height="19" viewBox="0 0 170 170" aria-labelledby="apple-label" role="img"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.197-2.12-9.973-3.17-14.34-3.17-4.58 0-9.492 1.05-14.746 3.17-5.262 2.13-9.501 3.24-12.742 3.35-4.929.21-9.842-1.96-14.746-6.52-3.13-2.73-7.045-7.41-11.735-14.04-5.032-7.08-9.169-15.29-12.41-24.65-3.471-10.11-5.211-19.9-5.211-29.378 0-10.857 2.346-20.221 7.045-28.068 3.693-6.303 8.606-11.275 14.755-14.925s12.793-5.51 19.948-5.629c3.915 0 9.049 1.211 15.429 3.591 6.362 2.388 10.447 3.599 12.238 3.599 1.339 0 5.877-1.416 13.57-4.239 7.275-2.618 13.415-3.702 18.445-3.275 13.63 1.1 23.87 6.473 30.68 16.153-12.19 7.386-18.22 17.731-18.1 31.002.11 10.337 3.86 18.939 11.23 25.769 3.34 3.17 7.07 5.62 11.22 7.36-.9 2.61-1.85 5.11-2.86 7.51zM119.11 7.24c0 8.102-2.96 15.667-8.86 22.669-7.12 8.324-15.732 13.134-25.071 12.375a25.222 25.222 0 0 1-.188-3.07c0-7.778 3.386-16.102 9.399-22.908 3.002-3.446 6.82-6.311 11.45-8.597 4.62-2.252 8.99-3.497 13.1-3.71.12 1.083.17 2.166.17 3.24z"></path></svg></span>
-                                                        <span>Continue with Apple</span>
+                                                </div>
+                                                <div class="d-flex flex-column gap-5">
+                                                    <div class="px-5 py-4 otp mb-5">
+                                                        <div class="otp-head">
+                                                            Verify your Mobile Number
+                                                        </div>
+                                                        <div class="otp-sent">
+                                                            Enter OTP sent to <span>+91 8300833265</span>
+                                                        </div>
+                                                        <div class="d-flex otpField">
+                                                            <input type="tel" id="otp1" class="jLBVFy" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this, event)">
+                                                            <input type="tel" id="otp2" class="jLBVFy" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this, event)">
+                                                            <input type="tel" id="otp3" class="jLBVFy" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this, event)">
+                                                            <input type="tel" id="otp4" class="jLBVFy" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this, event)">
+                                                            <input type="tel" id="otp5" class="jLBVFy" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this, event)">
+                                                            <input type="tel" id="otp6" class="jLBVFy" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this, event)">
+                                                        </div>
+                                                        <div  class="py-4 text-start">
+                                                        <span class="otpError" id="otpError"></span>
+                                                        </div>
                                                     </div>
-                                                </form>
-                                                <div class="or">OR</div>    
-                                            </div>
-                                            <form class="hmgVIc ">
-                                                <div class=" py-4 d-flex phoneLogin or ">
-                                                    <div class="flag"><img alt="indian flag" src="//in.bmscdn.com/webin/common/icons/indianflag.svg"></div>
-                                                    <span class="countryCode" id="countryCode">+91</span>
-                                                    <input id="mobileNo" type="text"  maxlength="10"  placeholder="Enter the mobile number" class="phoneInput">
-                                                </div>
-                                                <div class=""></div>
-                                                
-                                                <div class="py-4 pb-5 agreement">I agree to the 
-                                                    <a href="/terms-and-conditions" target="_blank" color="DIMGRAY" class="bwc__sc-dh558f-36 hsNZXc">Terms &amp; Conditions</a> 
-                                                    &amp; <a href="/privacy" target="_blank" color="DIMGRAY" class="bwc__sc-dh558f-36 hsNZXc">Privacy Policy</a>
-                                                </div>
-                                                <button class="my-4 btn-continue" type="submit" id="countinue" disabled>Continue</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div  class="modal-content loginForm" id="loginOtpContent">
-                                        <div class="backarrow">
-                                            <div id="loginBack">
-                                                <svg type="button" width="16" height="13" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><title>Go back</title><path d="M72.7,0c1.9,0.1,3.6,1.2,4.6,3.3s0.7,4.2-0.8,6.1c-0.2,0.2-0.4,0.4-0.6,0.6c-5.1,5.1-10.2,10.2-15.3,15.4
-                                                    c-7,7-13.9,14-20.9,21c-2.2,2.2-2.2,5.2,0,7.4C51.8,65.9,63.8,77.9,75.9,90c1.3,1.3,2.1,2.7,2.1,4.5c-0.1,2.3-1.2,4.1-3.3,5
-                                                    c-2.1,1-4.1,0.6-5.9-0.8c-0.3-0.2-0.5-0.5-0.8-0.7C53.2,83.2,38.5,68.5,23.8,53.8c-2.4-2.4-2.3-5.2,0-7.6c4-4,7.9-8,11.9-12
-                                                    C44.5,25.4,53.3,16.6,62,7.8c2-2,4-4,6-6C69.2,0.7,70.6,0,72.7,0z"></path>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-column gap-5">
-                                            <div class="px-5 py-4 otp mb-5">
-                                                <div class="otp-head">
-                                                    Verify your Mobile Number
-                                                </div>
-                                                <div class="otp-sent">
-                                                    Enter OTP sent to <span>+91 8300833265</span>
-                                                </div>
-                                                <div class="d-flex otpField">
-                                                    <input type="tel" id="otp1" class="jLBVFy" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this, event)">
-                                                    <input type="tel" id="otp2" class="jLBVFy" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this, event)">
-                                                    <input type="tel" id="otp3" class="jLBVFy" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this, event)">
-                                                    <input type="tel" id="otp4" class="jLBVFy" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this, event)">
-                                                    <input type="tel" id="otp5" class="jLBVFy" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this, event)">
-                                                    <input type="tel" id="otp6" class="jLBVFy" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this, event)">
-                                                </div>
-                                                <div  class="py-4 text-start">
-                                                <span class="otpError" id="otpError"></span>
+                                                    <div class="px-5 pb-4 mt-5">
+                                                        <span class="otpTimer agreement" id="timer"></span>
+                                                        <span class="otpTimer agreement" id="resent">Didn't receive OTP?<button class="otpResend" id="otpResend" type="button">Resend OTP!</button> </span>
+                                                        <button class="my-4 btn-continue hide" type="button" id="secCountinue">Continue</button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="px-5 pb-4 mt-5">
-                                                <span class="otpTimer agreement" id="timer"></span>
-                                                <span class="otpTimer agreement" id="resent">Didn't receive OTP?<button class="otpResend" id="otpResend" type="button">Resend OTP!</button> </span>
-                                                <button class="my-4 btn-continue hide" type="button" id="secCountinue">Continue</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="menu-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="material-symbols-outlined   fs-3">menu</span></button>
 
-                            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                                <div class="offcanvas-header">
-                                    <h5 id="offcanvasRightLabel">Offcanvas right</h5>
-                                    <!---<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>--->
-                                </div>
-                                <div class="offcanvas-body">
-                                    ...
+                                        </div>
+                                    </div>
+                                    <button type="button" id="signin" Class="signUp me-4" data-bs-toggle="modal" data-bs-target="#signInModal">SignUp</button>
+                                    <div class="modal" id="signInModal"  data-bs-backdrop="static" aria-labelledby="signInModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog ">
+                                            <div class="modal-content signupform">
+                                                <div class="modal-header">
+                                                    <div class="signTitle" id="">Registration Form</div>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body signInBody">
+                                                    <form>
+                                                        <div class="d-flex flex-column signinput">
+                                                            <label for="username">User Name</label>
+                                                            <input type="text" id="signName" onkeydown="nameCheck(event)" onchange="nameValidation()">
+                                                        </div>
+                                                        <p class="otpError" id="namerror"></p>
+                                                        <div class="d-flex flex-column signinput">
+                                                            <label for="signphone">Phone No</label>
+                                                            <input type="text" id="signphone" maxlength="10" onkeydown="numberCheck(event)" onchange="phoneValidation()">
+                                                        </div>
+                                                        <p class="otpError" id="numberror"></p>
+                                                        <div class="d-flex flex-column signinput">
+                                                            <label for="email">Email</label>
+                                                            <input type="text" id="sign" onchange="mailIdValidation()">
+                                                        </div>
+                                                        <p class="otpError" id="mailerror"></p>
+                                                        <input type="hidden" value="1" id="roleid">
+                                                        <div class="d-flex justify-content-center mb-3">
+                                                            <button type="submit" id="signInFrom" class="btn btn-primary">Submit</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="material-symbols-outlined   fs-3">menu</span></button> 
                                 </div>
                             </div>
                         <cfelse>
-                            <div class="d-flex">
-                                <cfoutput>
-                                    <cfset local.profile = "profile-demo.png">
-                                    <img src="Assets/#local.profile#" alt="Profile" class="profile">
-                                    <span class="user-name">Hi, Guest</span>
-                                </cfoutput>
-                            </div>
+                            <cfif session.login eq "1">
+                                <div class="userLoged">
+                                    <div class="d-flex mt-1">
+                                        <img src="Assets/profile-demo.png" alt="Profile" class="profile">
+                                        <button class="menu-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><span class="user-name">Hi, Guest</span></button>
+                                    </div>
+                                </div>
+                            <cfelse>
+                                <div class="d-flex mt-1 admin">
+                                    <button class="admin-btn" data-bs-toggle="offcanvas" data-bs-target="#adminOffcanvasRight" aria-controls="offcanvasRight">Admin</button>
+                                    <div class="offcanvas offcanvas-end" tabindex="-1" id="adminOffcanvasRight" aria-labelledby="offcanvasRightLabel">
+                                        <div class="offcanvas-header">
+                                            <cfif session.loginid eq ""> 
+                                            </cfif>
+                                        </div>
+                                        <div class="offcanvas-body">
+                                            ...admin
+                                        </div>
+                                    </div>
+                                </div>
+                            </cfif>
                         </cfif>
+                        
+                        
+                        
+                    </div>
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                        <div class="offcanvas-header">
+                            <cfif session.login eq ""> 
+                            </cfif>
+                        </div>
+                        <div class="offcanvas-body d-flex flex-column justify-content-between p-0">
+                            <div>
+                                hii
+                            </div>
+                            <cfif session.login neq "">
+                                <div class="logout">
+                                    <button class="logout-btn btn btn-danger" id="logout-btn" onclick="logout()">Logout</button>
+                                </div>
+                            </cfif>
+                        </div>
                     </div>
                 </div>
             </div>

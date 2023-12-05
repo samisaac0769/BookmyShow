@@ -293,15 +293,14 @@ a {
     border: 1px solid rgb(220, 53, 88);
 }
 
-.otp{
+.otp {
     flex: 1 1 0%;
 }
 
-.otpTimer{
-}
+.otpTimer {}
 
-.hide{
-    visibility: hidden;    
+.hide {
+    visibility: hidden;
 }
 
 /* .otpField input::-webkit-inner-spin-button,
@@ -309,13 +308,85 @@ a {
     display: none;
 } */
 
-.otpError{
+.otpError {
     color: red;
     font-size: 13px;
 }
-.otpResend{
+
+.otpResend {
     border: none;
     outline: none;
     color: #DC3558;
     padding: 0 5px;
 }
+
+
+/* .userSignup{
+    display: block;
+}*/
+
+/* .admin{
+    display: none;
+}  */
+
+.admin-btn {
+    margin-left: 15px;
+    border: none;
+    outline: none;
+    padding: 0px 17px;
+    color: black;
+    background: aquamarine;
+    border-radius: 25px;
+}
+
+.register {
+    font-size: 12px;
+    color: rgb(51, 51, 51);
+}
+
+.register span {
+    color: rgb(36, 36, 236);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.signTitle {
+    color: rgb(255, 254, 254);
+    font-size: 19px;
+    margin-left: 35%;
+    font-weight: 600;
+}
+
+
+
+label {
+    color: ffffff;
+    font-size: 14px !important;
+}
+
+.signinput {
+    margin: 10px;
+}
+
+.signinput input {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    padding: 5px 10px;
+    background: transparent;
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+}
+
+.signInBody {
+    margin: 20px 50px 0 50px;
+
+}
+
+.signupform {
+    background-image: linear-gradient(rgba(0, 255, 76, 0.5), rgba(255, 0, 64, 0.5)), url("../Assets/popcon.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
