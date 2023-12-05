@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@400;500;700;900&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+}
+
+.reco-movie {
+    font-size: 24px;
+    color: #333333;
+}
+
+.seeall {
+    font-size: 14px;
+    color: rgb(220, 53, 88);
+    word-break: break-word;
+    line-height: 1.43;
+    font-weight: normal;
+}
+
+.movie-poster {
+    height: 380px;
+    position: relative;
+}
+
+.movie-poster img {
+    border-radius: 8px;
+}
+
+.rating {
+
+    position: absolute;
+    background-color: black;
+    color: white;
+    width: 100%;
+    bottom: 0;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding: 5px 10px;
+}
+
+.movie-name {
+    word-break: break-word;
+    color: rgb(34, 34, 34);
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.movie-geners {
+    font-size: 16px;
+    color: #666666;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.rating span {
+    font-size: 16px;
+    font-weight: normal;
+}
