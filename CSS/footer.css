@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@400;500;700;900&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.bg {
+    background-color: rgb(49, 48, 53);
+}
+
+.ftr-contact {
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    text-align: center;
+}
+
+.jwUOBP {
+    flex: 0 0 auto;
+    margin: 0px 10px;
+    font-weight: 600;
+}
+
+.jNUTAs {
+    flex: 1 1 0%;
+}
+
+.gikDcv {
+    width: 50px;
+    height: 50px;
+}
+
+.ftr-sec-title {
+    color: rgba(188, 192, 196, 0.74);
+    ;
+    text-align: inherit;
+    line-height: 18px;
+    width: auto;
+    flex-basis: auto;
+    margin-top: 10px;
+    font-size: 11px;
+}
+
+.ftr-sec-title:hover {
+    color: aliceblue;
+}
+
+.gikDcv svg {
+    fill: rgb(198, 198, 199);
+}
+
+.gikDcv svg:hover{
+    fill: aliceblue;
+}
+
+.ftr-sec{
+   background-color:  rgb(64, 64, 67);
+}
+
+.igiRIk {
+    flex: 1 1 0%;
+    height: 1px;
+    background: rgb(93, 93, 95);
+}
+
+.LFerV {
+    padding: 0px 20px;
+}
+
+.iaUPsu {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    height: 125px;
+}
+
+.dtUDzi {
+    text-align: center;
+}
+
+.hOLPST {
+    display: inline-block;
+    margin-right: 10px;
+    width: 37px;
+    height: 37px;
+}
+
+.hOLPST svg {
+    fill: rgb(93, 93, 95);
+}
+.hOLPST svg:hover{
+    fill: rgb(198, 198, 199);
+}
+
+.eOLamZ {
+    padding: 30px;
+    font-size: 11px;
+    color: rgb(102, 102, 102);
+    text-align: center;
+}

@@ -7,24 +7,16 @@
         </cfquery>
 
         <cfif queryRecordCount(qryCheckUserExist)>
-            <!-- User exists, retrieve details -->
             <cfquery name="qryUserDetails">
                 SELECT * FROM userTable WHERE phone = <cfqueryparam value="#arguments.loginNumber#" cfsqltype="CF_SQL_VARCHAR">
             </cfquery>
             
             <cfset session.login = "#qryUserDetails.roleid#">
+            <cfset session.userDetail = "#qryUserDetails.fullName#">
             <cfreturn "true">
-            <!---<cfset local.roleid = "#qryUserDetails.roleid#">
-            
-           <cfif local.roleid eq "1">
-                <cfreturn "1">
-            <cfelse>
-                <cfreturn "2">
-            </cfif>--->
         <cfelse>
             <cfreturn "false">
         </cfif>
-        
     </cffunction>
 
     <cffunction  name="signIn" access="remote" returntype="boolean">
@@ -37,7 +29,7 @@
             SELECT userid FROM userTable WHERE phone = <cfqueryparam value="#arguments.phoneNo#" cfsqltype="CF_SQL_VARCHAR">
         </cfquery>
 
-        <cfif qryCheckUser.recordCount gt 0>
+        <cfif qryCheckUser.recordCount>
             <cfset local.result = true>
         <cfelse>
             <cfquery name="qrySignInInsert">

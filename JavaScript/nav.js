@@ -78,6 +78,7 @@ $(document).ready(function () {
     });
 
     $("#secCountinue").on("click", function (e) {
+        
         e.preventDefault();
         let inputOTP = $("#otp1").val() + $("#otp2").val() + $("#otp3").val() + $("#otp4").val() + $("#otp5").val() + $("#otp6").val();
         if (inputOTP.trim() == otp) {
@@ -177,7 +178,6 @@ $(document).ready(function () {
         }
         
     })
-    
     
 });
 
