@@ -12,7 +12,7 @@
     <body>
         <cfinclude  template="nav_bar.cfm">
         
-            <cfset local.movieid = url.movieid>
+            <cfset local.movieid = id>
             <cfset local.movieDetails = createObject("component", "Components/moviedetail")>
             
             <cfoutput>
@@ -55,12 +55,20 @@
                                                 #item# <cfif index lt listLen(local.movie.moviegenres)>/</cfif>
                                             </cfloop>
                                         </span>
-                                        <span class="sc-2k6tnd-5 juHVhn">  &bull;  </span><span>#local.movie.certificate#</span>
-                                        <span class="sc-2k6tnd-5 juHVhn">  &bull;  </span><span>#DateFormat(parseDateTime(local.movie.relesedate), "dd MMM, yyyy")#</span>
-
+                                        <span class="sc-2k6tnd-5 juHVhn">  &bull;  </span>
+                                        <span>#local.movie.certificate#</span>
+                                        <span class="sc-2k6tnd-5 juHVhn">  &bull;  </span>
+                                        <span>#DateFormat(parseDateTime(local.movie.relesedate), "dd MMM, yyyy")#</span>
                                     </div>
                                     <div class="mt-3 ms-3">
-                                        <button class="btn-book">Book tickets</button>
+                                        <form action="movietheaterlist.cfm" method="post">
+                                            <input type="hidden" value="#local.movieid#" name="id">
+                                            <input type="hidden" value="#local.movie.moviename#" name="moviename">
+                                            <input type="hidden" value="#local.movie.certificate#" name="certificate">
+                                            <input type="hidden" value="#local.movie.moviegenres#" name="genres">
+                                            <input type="hidden" value="#local.movie.relesedate#" name="relisedate">
+                                            <button type="submit" class="btn-book">Book tickets</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

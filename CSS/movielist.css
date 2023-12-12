@@ -29,4 +29,61 @@ body {
     font-size: 12px;
     font-weight: 400;
     line-height: 16px;
+    cursor: pointer;
 }
+
+.movie-poster {
+    height: 360px;
+    position: relative;
+}
+
+.movie-card {
+    width: 220px;
+
+}
+
+.movie-poster img {
+    border-radius: 8px;
+}
+
+.rating {
+    position: absolute;
+    background-color: black;
+    color: white;
+    width: 100%;
+    bottom: 0;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding: 5px 10px;
+}
+
+.movie-name {
+    word-break: break-word;
+    color: rgb(34, 34, 34);
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.movie-geners {
+    font-size: 16px;
+    color: #666666;
+    font-weight: normal;
+}
+
+a {
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+.rating span {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.movie-card-btn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
