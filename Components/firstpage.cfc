@@ -36,4 +36,29 @@
         </cfquery>
         <cfreturn qrymainPageEventList>
     </cffunction>
+
+    <cffunction  name="movieList" returntype="query">
+        <cfquery name="qrymovieList">
+            SELECT
+                ml.movieId,
+                ml.moviename,
+                ml.movieposter,
+                ml.rating,
+                ml.votings,
+                STRING_AGG(mg.moviegenres, ', ') AS moviegenres
+            FROM
+                movielist ml
+            JOIN
+                MGMapping mgm ON ml.movieId = mgm.movieid
+            JOIN
+                movieGenresList mg ON mgm.genresid = mg.genresId
+            GROUP BY
+                ml.movieId, ml.moviename, ml.movieposter, ml.rating, ml.votings
+            ORDER BY
+                ml.movieId DESC;
+        </cfquery>
+        <cfreturn qrymovieList>
+    </cffunction>
+
+
 </cfcomponent>

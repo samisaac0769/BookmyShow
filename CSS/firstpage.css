@@ -51,7 +51,7 @@ body {
 .movie-name {
     word-break: break-word;
     color: rgb(34, 34, 34);
-    font-family: Roboto;
+    font-family: 'Roboto';
     font-size: 18px;
     font-weight: 500;
 }
@@ -85,4 +85,10 @@ a {
 
 .moviebgposter{
     display: none !important;
+}
+
+.movie-card-btn{
+    border: none;
+    outline: none;
+    cursor: pointer;
 }

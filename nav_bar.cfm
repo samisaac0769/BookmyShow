@@ -167,16 +167,8 @@
                                 </cfoutput>
                             <cfelseif session.login eq "2">
                                 <div class="d-flex mt-1 admin">
-                                    <button class="admin-btn" data-bs-toggle="offcanvas" data-bs-target="#adminOffcanvasRight" aria-controls="offcanvasRight">Admin</button>
-                                    <div class="offcanvas offcanvas-end" tabindex="-1" id="adminOffcanvasRight" aria-labelledby="offcanvasRightLabel">
-                                        <div class="offcanvas-header">
-                                            <cfif session.login eq ""> 
-                                            </cfif>
-                                        </div>
-                                        <div class="offcanvas-body">
-                                            ...admin
-                                        </div>
-                                    </div>
+                                    <button class="signUp me-3" id="logout-btn" onclick="logout()">Logout</button>
+                                    <button class="admin-btn">Admin</button>
                                 </div>
                             </cfif>
                         </cfif>
