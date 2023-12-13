@@ -30,25 +30,25 @@
                             <form action="moviedetailpage.cfm" method="post"> 
                                 <input type="hidden"name="id" value="#movielist.movieid#">
                                 <button class="movie-card-btn">
-                                        <div class="">
-                                            <div class="movie-poster">
-                                                <img src="Assets/movieposter/#movieList.movieposter#" width="240">
-                                                <div class="rating  d-flex justify-content-around">
-                                                    <span class="d-flex"><img class="me-2" src="Assets/icons8-star-50.png" height="20" width="20">#movieList.rating#/10</span>
-                                                    <span>#formatVotings(movieList.votings)# Votes</span>
-                                                </div>
-                                                
+                                    <div class="">
+                                        <div class="movie-poster">
+                                            <img src="Assets/movieposter/#movieList.movieposter#" width="240">
+                                            <div class="rating  d-flex justify-content-around">
+                                                <span class="d-flex"><img class="me-2" src="Assets/icons8-star-50.png" height="20" width="20">#movieList.rating#/10</span>
+                                                <span>#formatVotings(movieList.votings)# Votes</span>
                                             </div>
-                                            <div class="d-flex flex-column gap-1 mt-3">
-                                                <div class="movie-name">#movieList.moviename#</div>
-                                                <div class="movie-geners">
-                                                    <cfloop list="#movieList.moviegenres#" item="item" index="index">
-                                                        #item# <cfif index lt listLen(movieList.moviegenres)>/</cfif>
-                                                    </cfloop>
-                                                </div>
+                                            
+                                        </div>
+                                        <div class="d-flex flex-column gap-1 mt-3">
+                                            <div class="movie-name">#movieList.moviename#</div>
+                                            <div class="movie-geners">
+                                                <cfloop list="#movieList.moviegenres#" item="item" index="index">
+                                                    #item# <cfif index lt listLen(movieList.moviegenres)>/</cfif>
+                                                </cfloop>
                                             </div>
                                         </div>
-                                    </button class="movie-card-btn">
+                                    </div>
+                                </button class="movie-card-btn">
                             </form>
                         </div>
                     </cfloop>

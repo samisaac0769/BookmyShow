@@ -13,7 +13,7 @@ body {
 .moviehead {
     background-color: rgb(51, 53, 69);
     padding: 35px 20px 15px;
-    
+
 }
 
 .movietitle {
@@ -22,10 +22,12 @@ body {
     font-weight: 400;
     cursor: pointer;
 }
-.movietitle:hover{
+
+.movietitle:hover {
     text-decoration: underline;
     font-weight: 400;
 }
+
 .certificate {
     text-align: center;
     border: 1px solid white;
@@ -38,12 +40,37 @@ body {
     cursor: pointer;
 }
 
-.genres{
+.genres {
     font-size: 10px;
-    font-weight:700 ;
+    font-weight: 700;
     color: #a09b9b;
     border: 1px solid #979696;
     padding: 2px 6px;
     border-radius: 15px;
     cursor: pointer;
+}
+
+#datepicker {
+    cursor: pointer;
+    background: url(../Assets/calendar.png) no-repeat;
+    background-size: cover;
+    border: 0px solid #444444;
+    height: 25PX;
+    width: 25px;
+    color: transparent;
+    padding-left: 4px;
+    font-size: 10px;
+    outline: none;
+}
+
+.datedisplay{
+    background-color: rgb(243, 53, 53);
+    padding: 5px 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.datedisplay span{
+    font-size: 10px;
+    color: white;
 }

@@ -1,6 +1,6 @@
 <cfcomponent>    
     <cfset this.name = "BookMyShow"> 
-    <cfset this.applicationTimeout = createTimeSpan(0, 0, 10, 0)> 
+    <cfset this.applicationTimeout = createTimeSpan(0, 0, 60, 0)> 
     <cfset this.sessionManagement = true> 
     <cfset this.sessionTimeout = createTimeSpan(0, 0, 30, 10)> 
     <cfset this.datasource = "BookMyShow">

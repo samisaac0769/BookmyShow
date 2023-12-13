@@ -6,6 +6,12 @@
     <link href="CSS/bootstrap-css.css" rel="stylesheet">
     <script src="JavaScript/bootstrap-js.js"></script>
     <script src="JavaScript/jquery-3.7.1.js" ></script>
+    
+    <!-- Include jQuery UI CSS -->
+    <link rel="stylesheet" href="CSS/jquery-ui.css">
+
+    <!-- Include jQuery UI library -->
+    <script src="JavaScript/jquery-ui.js"></script>
     <link href="CSS/Googleicon.css" rel="stylesheet">
     <link href="CSS/nav_bar.css" rel="stylesheet">
     <link href="CSS/offcanvas.css" rel="stylesheet">
