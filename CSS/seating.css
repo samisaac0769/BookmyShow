@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Roboto:wght@400;500;700;900&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.back-btn {
+    outline: none;
+    border: none;
+}
+
+.back {
+    color: rgb(59, 57, 57);
+    font-size: 24px;
+}
+
+.certificate {
+    text-align: center;
+    border: 1px solid rgb(26, 25, 25);
+    color: #333333;
+    padding: 2px;
+    border-radius: 50%;
+    min-width: 20px;
+    min-height: 20px;
+    font-size: 10px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.f-12 {
+    font-size: 12px;
+    font-weight: 700;
+    color: #666666;
+}
+
+.m-name {
+    font-size: 14px;
+    color: #333333;
+}
+
+.tickets {
+    border: 1px solid #666666;
+    font-size: 11px;
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.close {
+    cursor: pointer;
+}
+
+.seatset {
+    width: 690px;
+}
+
+.seatCatagery {
+    width: 100%;
+    color: #949393;
+    font-size: 12px;
+    text-align: left;
+    font-weight: 400;
+}
+
+.seat {
+    user-select: none;
+    border: 1px solid #1ea83c;
+    width: 25px;
+    height: 25px;
+    border-radius: 2px;
+    color: #1ea83c;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.selected {
+    user-select: none;
+    border: 1px solid #1ea83c;
+    background-color:#1ea83c ;
+    width: 25px;
+    height: 25px;
+    border-radius: 2px;
+    color: #ffffff;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.eyes {
+    display: flex;
+    justify-content: center;
+    color: #333;
+    font-size: 12px
+}
+
+.screenicon {
+    width: 260px;
+    height: 20px;
+    display: block;
+    margin: 50px auto 10px
+}
+
+.payment {
+    background: #fff;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .5);
+    width: 100%;
+    margin-top: 5px;
+    text-align: -webkit-center;
+}
+
+.pay-btn {
+    background-color: #f84464;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 49%;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    min-height: 40px;
+    max-width: 400px
+}

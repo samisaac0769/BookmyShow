@@ -14,7 +14,6 @@
         
             <cfset local.movieid = id>
             <cfset local.movieDetails = createObject("component", "Components/moviedetail")>
-            
             <cfoutput>
                 <cfset local.movie =local.movieDetails.getMovieById(local.movieid)>
                 <div class="" >
@@ -62,12 +61,8 @@
                                     </div>
                                     <div class="mt-3 ms-3">
                                         <form action="movietheaterlist.cfm" method="post">
-                                            <input type="hidden" value="#local.movieid#" name="id">
-                                            <input type="hidden" value="#local.movie.moviename#" name="moviename">
-                                            <input type="hidden" value="#local.movie.certificate#" name="certificate">
-                                            <input type="hidden" value="#local.movie.moviegenres#" name="genres">
-                                            <input type="hidden" value="#local.movie.relesedate#" name="relisedate">
-                                            <button type="submit" class="btn-book">Book tickets</button>
+                                            <input type="hidden" value="#local.movieid#" id="movieId" name="id">
+                                            <button type="submit" id="bookmovie" class="btn-book">Book tickets</button>
                                         </form>
                                     </div>
                                 </div>

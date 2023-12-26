@@ -13,7 +13,7 @@ body {
 .moviehead {
     background-color: rgb(51, 53, 69);
     padding: 35px 20px 15px;
-    
+
 }
 
 .movietitle {
@@ -22,10 +22,12 @@ body {
     font-weight: 400;
     cursor: pointer;
 }
-.movietitle:hover{
+
+.movietitle:hover {
     text-decoration: underline;
     font-weight: 400;
 }
+
 .certificate {
     text-align: center;
     border: 1px solid white;
@@ -38,12 +40,134 @@ body {
     cursor: pointer;
 }
 
-.genres{
+.genres {
     font-size: 10px;
-    font-weight:700 ;
+    font-weight: 700;
     color: #a09b9b;
     border: 1px solid #979696;
     padding: 2px 6px;
     border-radius: 15px;
     cursor: pointer;
+}
+
+#datepicker {
+    cursor: pointer;
+    background: url(../Assets/calendar.png) no-repeat;
+    background-size: cover;
+    border: 0px solid #444444;
+    height: 25PX;
+    width: 25px;
+    color: transparent;
+    padding-left: 4px;
+    font-size: 10px;
+    outline: none;
+}
+
+.datedisplay {
+    background-color: #f84464;
+    padding: 5px 15px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.datedisplay span {
+    font-size: 10px;
+    color: white;
+    font-weight: 500;
+}
+
+.language {
+    color: #333333;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.priceFilter {
+    color: #0E1422;
+    font-size: 13px;
+}
+
+.dotgreen {
+    height: 8px;
+    width: 8px;
+    margin-right: 10px;
+    border-radius: 4px;
+    background-color: #4abd5d;
+}
+
+.dotorange {
+    height: 8px;
+    width: 8px;
+    margin-right: 10px;
+    border-radius: 4px;
+    background-color: #f60;
+}
+
+.filterOption span {
+    font-size: 10px;
+    color: #717171;
+}
+
+.lan {
+    color: #4abd5d;
+    margin-right: 10px;
+    border: .8px solid #4abd5d;
+    height: 12px;
+    font-size: 8px;
+    font-weight: 700;
+    width: 22px;
+    justify-content: center;
+    display: flex;
+    padding: 1px 1px;
+    align-items: center;
+}
+
+.HEART {
+    fill: RED;
+}
+
+.info{
+    font-size: 10px;
+    color: #777;
+    text-align: center;
+}
+
+
+.cancel {
+    font-size: 12px;
+    color: #777;
+    text-align: left;
+}
+
+.infoicon {
+    font-size: 14px !important;
+}
+
+.moviename {
+    font-size: 12px;
+    width: 220px;
+    font-weight: 700;
+    color: #333;
+}
+
+.showtime-pill {
+    font-size: 12px;
+    border: 1px solid #999;
+    color: #4abd5d;
+    padding: 5px 30px;
+    border-radius: 4px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+.dotyellow {
+    height: 8px;
+    width: 8px;
+    margin-right: 10px;
+    border-radius: 4px;
+    background-color: rgb(251, 255, 0);
 }

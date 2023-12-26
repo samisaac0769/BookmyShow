@@ -17,17 +17,17 @@
     text-align: center;
 }
 
-.jwUOBP {
+.hutlitle {
     flex: 0 0 auto;
     margin: 0px 10px;
     font-weight: 600;
 }
 
-.jNUTAs {
+.hutmsg {
     flex: 1 1 0%;
 }
 
-.gikDcv {
+.serviceIcon {
     width: 50px;
     height: 50px;
 }
@@ -47,11 +47,11 @@
     color: aliceblue;
 }
 
-.gikDcv svg {
+.serviceIcon svg {
     fill: rgb(198, 198, 199);
 }
 
-.gikDcv svg:hover{
+.serviceIcon svg:hover{
     fill: aliceblue;
 }
 
@@ -59,42 +59,42 @@
    background-color:  rgb(64, 64, 67);
 }
 
-.igiRIk {
+.dash {
     flex: 1 1 0%;
     height: 1px;
     background: rgb(93, 93, 95);
 }
 
-.LFerV {
+.dashimg {
     padding: 0px 20px;
 }
 
-.iaUPsu {
+.dashdiv {
     display: flex;
     width: 100%;
     align-items: center;
     height: 125px;
 }
 
-.dtUDzi {
+.iconpath {
     text-align: center;
 }
 
-.hOLPST {
+.mediaicon {
     display: inline-block;
     margin-right: 10px;
     width: 37px;
     height: 37px;
 }
 
-.hOLPST svg {
+.mediaicon svg {
     fill: rgb(93, 93, 95);
 }
-.hOLPST svg:hover{
+.mediaicon svg:hover{
     fill: rgb(198, 198, 199);
 }
 
-.eOLamZ {
+.copyright {
     padding: 30px;
     font-size: 11px;
     color: rgb(102, 102, 102);
