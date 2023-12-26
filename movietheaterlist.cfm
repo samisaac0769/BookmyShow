@@ -102,12 +102,12 @@
                                     <cfloop list="#local.theaterDetail.TheaterTimings#" item="item">
                                         <cfset local.parsedTime = ParseDateTime(item)>
                                         <cfset local.startTimeFormatted = TimeFormat(local.parsedTime, "hh:mm tt")>
-                                        <form >
+                                        <form action="seating.cfm" method="post">
                                             <input type="hidden" value="#local.movieid#" name="movieid" id="movieid">
                                             <input type="hidden" value="#local.theaterDetail.theaterId#" name="theaterId" id="theaterId">
-                                            <input type="hidden" value="#local.startTimeFormatted#" name="time" id="time">
+                                            <input type="hidden" value="#local.startTimeFormatted#" name="time" class="time">
                                             <input type="hidden" class="bookdate" name="bookdate" id="bookdate">
-                                            <button class="showtime-pill" type="button" >#local.startTimeFormatted#</button>
+                                            <button class="showtime-pill" type="submit" >#local.startTimeFormatted#</button>
                                         </form>
                                     </cfloop>
                                 </div>

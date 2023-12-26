@@ -12,6 +12,7 @@
             </cfquery>
             
             <cfset session.login = "#qryUserDetails.roleid#">
+            <cfset session.userid = "#qryUserDetails.userid#">
             <cfset session.userDetail = "#qryUserDetails.fullName#">
             <cfreturn "true">
         <cfelse>

@@ -33,14 +33,17 @@ $(document).ready(function () {
     });
 
 
-    $(".showtime-pill").click(function () {
-        var movieid = $("#movieid").val();
-        var theaterId = $("#theaterId").val();
-        var time = $("#time").val();
-        var bookdate = $("#bookdate").val();
-
-        document.location.href = "seating.cfm?movieid=" + movieid + "&theaterId=" + theaterId + "&time=" + time + "&bookdate=" + bookdate +"";
-    })
+    // $(".showtime-pill").click(function () {
+    //     // var index = $(this).data("index");
+    //     // alert(index);
+    //     var movieid = $("#movieid").val();
+    //     var theaterId = $("#theaterId").val();
+    //     var time = $(".time").val();
+        
+    //     var bookdate = $("#bookdate").val();
+    //     alert(time);
+    //     // document.location.href = "seating.cfm?movieid=" + movieid + "&theaterId=" + theaterId + "&time=" + time + "&bookdate=" + bookdate +"";
+    // })
 
 
 });
