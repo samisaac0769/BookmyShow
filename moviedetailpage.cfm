@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Movie Details</title>
+        <link rel="icon" type="image/x-icon" href="Assets/fovicon.png">
         <script src="JavaScript/jquery-3.7.1.js" ></script>
         <script src="JavaScript/firstpage.js"></script>
         <link href="CSS/moviedetail.css" rel="stylesheet">

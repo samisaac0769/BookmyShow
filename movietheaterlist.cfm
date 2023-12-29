@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Theater</title>
-    <link rel="icon" type="image/x-icon" href="Assets/fovicon.jpg">
+    <link rel="icon" type="image/x-icon" href="Assets/fovicon.png">
     
     <!-- Include jQuery library -->
     <script src="JavaScript/jquery-3.7.1.js"></script>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="Assets/fovicon.png">
     <!-- Include jQuery library -->
     <script src="JavaScript/jquery-3.7.1.js"></script>
 
@@ -31,6 +32,9 @@
         <cfset local.theaterDetail = theaterDetails.getTheaterById(local.theaterId)>
         <cfset local.formateDate = theaterDetails.dateFormate(local.bookdate)>
         <cfset local.seatings = theaterDetails.seatings()>
+        <cfset local.bookedSeats = theaterDetails.getBookedSeats(local.movieId,local.theaterId,local.bookdate,local.time)>
+
+        <input type="hidden" id="bookedSeats" value="#local.bookedSeats.bookedSeats#">
 
         <div>
             <div class="p-3 d-flex justify-content-between border-bottom">
@@ -90,6 +94,27 @@
                     </svg>
                 </span>
                 <span class="eyes">All eyes this way please!</span>
+                <div class="d-flex align-items-center justify-content-center gap-4 my-2">
+                    <div class="d-flex align-items-center">
+                        <div class="Bestseller infobox"></div>
+                        <div class="d-flex align-items-center ms-2 seatinfo gap-1">
+                            <span>Bestseller</span>
+                            <span class="material-symbols-outlined infoicon ">info</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="Available infobox"></div>
+                        <span class="seatinfo">Available</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="Selected infobox"></div>
+                        <span class="seatinfo">Selected</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="sold infobox"></div>
+                        <span class="seatinfo">Sold</span>
+                    </div>
+                </div>
             </div>
             <div class="payment" id="payment">
                 <form>

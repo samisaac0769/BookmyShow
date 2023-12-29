@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@400;500;700;900&display=swap');
 
 * {
     margin: 0px;
@@ -11,26 +11,35 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-.reco-movie {
+.heading {
     font-size: 24px;
-    color: #333333;
+    font-weight: 700;
+    line-height: 30px;
+    color: rgb(51, 51, 51);
 }
 
-.seeall {
-    font-size: 14px;
-    color: rgb(220, 53, 88);
+.language {
+    border-radius: 20px;
+    margin-right: 10px;
+    padding: 7px 14px;
+    border: 1px solid rgb(204, 204, 204);
     word-break: break-word;
-    line-height: 1.43;
-    font-weight: normal;
+    color: rgb(220, 53, 75);
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    cursor: pointer;
 }
 
 .movie-poster {
-    height: 380px;
+    height: 360px;
     position: relative;
 }
 
-.cards {
-    width: 240px;
+.movie-card {
+    width: 220px;
+
 }
 
 .movie-poster img {
@@ -62,15 +71,23 @@ body {
 .movie-geners {
     font-size: 16px;
     color: #666666;
+    font-weight: normal;
 }
 
 a {
     text-decoration: none !important;
+    cursor: pointer;
 }
 
 .rating span {
     font-size: 16px;
     font-weight: 300;
+}
+
+.movie-card-btn {
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
 .catprice {
@@ -83,15 +100,5 @@ a {
     color: rgb(51, 51, 51);
     font-weight: normal;
     line-height: 1.5;
-
-}
-
-.moviebgposter {
-    display: none !important;
-}
-
-.movie-card-btn {
-    border: none;
-    outline: none;
-    cursor: pointer;
+    font-size: 15px
 }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie List</title>
+    <link rel="icon" type="image/x-icon" href="Assets/fovicon.png">
     <link href="CSS/bootstrap-css.css" rel="stylesheet">
     <script src="JavaScript/bootstrap-js.js"></script>
     <script src="JavaScript/jquery-3.7.1.js" ></script>
@@ -51,9 +52,8 @@
                                                             <span class="d-flex"><img class="me-2" src="Assets/icons8-star-50.png" height="20" width="20">#movieList.rating#/10</span>
                                                             <span>#formatVotings(movieList.votings)# Votes</span>
                                                         </div>
-                                                        
                                                     </div>
-                                                    <div class="d-flex flex-column gap-1 mt-3">
+                                                    <div class="d-flex flex-column gap-1 mt-3 align-items-start">
                                                         <div class="movie-name">#movieList.moviename#</div>
                                                         <div class="movie-geners">
                                                             <cfloop list="#movieList.moviegenres#" item="item" index="index">
@@ -76,7 +76,7 @@
             </div>
         </div>
     </cfoutput>
-<cfscript>
+    <cfscript>
         function formatVotings(votings) {
             var formattedVotings = "";
 
