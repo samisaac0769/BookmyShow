@@ -8,6 +8,29 @@ $(document).ready(function () {
         backgroundPosition: "center",  // Corrected property name
     });
 
+    $("#eventBooking").click(function () {
+        let selectedEventId = $("#selectedEventId").val();
+        document.location.href = "eventbooking.cfm?eventid=" + selectedEventId;
+    })
+
+    $(".back-btn").click(function () {
+        window.history.back();
+    });
+
+    $("#mySelect").on("change", function () {
+        let nofseats = $("#mySelect").val();
+        let seatprice = $("#seatprice").val();
+
+        let totalprice = nofseats * seatprice;
+        console.log(totalprice);
+
+        $("#eventpayment").show();
+        $("#eventpayment").text("Pay $" + " " + totalprice);
+    });
+    $("#eventpayment").click(function () {
+        alert("Tickets Booked Successfully");
+        document.location.href = "eventlist.cfm"
+    });
     // function encryptMovieId(movieId) {
     //     // Replace this with a more secure encryption algorithm
     //     return btoa(movieId); // Using base64 encoding for simplicity
@@ -25,8 +48,6 @@ $(document).ready(function () {
     //         document.location.href = url;
     //     });
     // });
-
-
 });
 
 // function formatVotings(votings) {
@@ -40,3 +61,4 @@ $(document).ready(function () {
 
 //     return formattedVotings;
 // }
+

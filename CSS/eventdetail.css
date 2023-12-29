@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.eventdetails {
+    position: relative;
+    margin: 0 100px 20px 100px;
+}
+
+.eventPoster {
+
+    width: 1150px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+.eventPoster img {
+    height: 450px;
+    width: auto;
+}
+
+
+.booking {
+    /* position: sticky;
+    z-index: 1000;
+    top: 0; */
+    background-color: white;
+}
+
+.eventname {
+    color: #222222;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.eventcatagerytime {
+    font-size: 16px;
+    font-weight: 400;
+    color: #222222;
+}
+
+.booking-btn {
+    font-size: 16px;
+    height: 60px;
+    width: 160px;
+    background-color: #EC5E71;
+    border: 1px solid #EC5E71;
+    outline: none;
+    border-radius: 8px;
+    color: #FFFFFF;
+}
+
+.fa-location-dot {
+    color: #f8c716;
+    padding-top: 3px;
+    font-size: large;
+}
+
+.dateLocation span {
+    font-size: 16px;
+    color: #222222;
+}
+
+.howfast {
+    border-radius: 3px;
+    width: fit-content;
+    color: #FFFFFF;
+    padding: 2px 5px;
+    font-size: 10px !important;
+    background-color: #F3993E;
+    text-transform: uppercase;
+}
+
+.share {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #222222;
+}
+
+.socialmedia i {
+    cursor: pointer;
+    color: #525456;
+}
+
+.interest {
+    font-size: 16px;
+    font-weight: 500;
+    columns: #333333;
+}
+
+.fa-thumbs-up {
+    font-size: 25px;
+}
+
+.likemsg {
+    font-size: 12px;
+    color: #666666;
+    width: 70%;
+    font-weight: normal;
+    line-height: 1.33;
+    margin-top: 5px;
+}
+
+.Interest-btn {
+    width: 148px;
+    height: 36px;
+    color: #EC5E71;
+    border: 1px solid #EC5E71;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.about {
+    color: #222222;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: Roboto;
+
+}
+
+.collocation {
+    font-size: 14px;
+    color: #666666;
+}
+
+.price {
+    color: #1F253A;
+    font-weight: 500;
+
+}
+
+.bookingnav {
+    position: relative;
+    background-color: #333545;
+    display: flex;
+    justify-content: center;
+}
+
+.icon {
+    position: absolute;
+    left: 30px;
+}
+
+.back-btn {
+    border: none;
+    background-color: transparent;
+}
+
+.spncol {
+    color: rgb(209, 207, 207);
+}
+
+.selectedeventname {
+    width: 500px;
+    color: rgb(204, 206, 207);
+    font-size: 16px;
+    text-align: center;
+}
+
+.selectedeventname .dateandplace {
+    font-size: 12px !important;
+    justify-content: center;
+    color: #adaaaa;
+}
+
+.bookeventseat {
+    display: flex;
+    width: 525px;
+    padding: 15px 10px;
+    font-family: 'Roboto' !important;
+}
+
+.heading {
+    text-transform: uppercase   ;
+    font-size: 14px;
+    color: #777777;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-align: start !important;
+}
+
+.PKG {
+    color: #222222;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.PKGprice {
+    font-size: 14px;
+    color: #666666;
+}
+
+select {
+    padding: 10px;
+    width: 150px;
+    border-radius: 8px;
+    border: 2px solid #EC5E71;
+    color: #333333;
+    outline: none;
+    text-align: center;
+}
+
+.eventpayment {
+    display: none;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid #EC5E71;
+    background-color: #EC5E71;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 10px;
+    width: 30%;
+    border-radius: 8px;
+    position: absolute;
+    bottom: 20px;
+}

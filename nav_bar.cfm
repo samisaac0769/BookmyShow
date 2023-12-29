@@ -176,6 +176,7 @@
                                     <button class="signUp me-3" id="logout-btn" onclick="logout()">Logout</button>
                                     <button class="admin-btn">Admin</button>
                                 </div>
+
                             </cfif>
                         </cfif>
                     </div>
@@ -187,17 +188,24 @@
             <div class="navsecondbox d-flex justify-content-between">
                 <div class="d-flex align-items-center">
                     <a href="movieList.cfm" class="bYfeWy">Movies</a>
-                    <a href="" class="bYfeWy">Stream</a>
-                    <a href="" class="bYfeWy">Events</a>
-                    <a href="" class="bYfeWy">Plays</a>
-                    <a href="" class="bYfeWy">Sports</a>
-                    <a href="" class="bYfeWy">Activities</a>
+                    <a href="#" class="bYfeWy">Stream</a>
+                    <a href="eventlist.cfm" class="bYfeWy">Events</a>
+                    <a href="#" class="bYfeWy">Plays</a>
+                    <a href="#" class="bYfeWy">Sports</a>
+                    <a href="#" class="bYfeWy">Activities</a>
                 </div>
                 <div class="d-flex align-items-center">
-                    <a href="" class="gXOPeC">ListYourShow</a>
-                    <a href="" class="gXOPeC">Corporates</a>
-                    <a href="" class="gXOPeC">Offers</a>
-                    <a href="" class="gXOPeC">Gift Cards</a>
+                    <cfif session.login eq "1" or session.login eq "">
+                        <a href="#" class="gXOPeC">ListYourShow</a>
+                        <a href="#" class="gXOPeC">Corporates</a>
+                        <a href="#" class="gXOPeC">Offers</a>
+                        <a href="#" class="gXOPeC">Gift Cards</a>
+                    <cfelse>
+                        <a href="#" class="gXOPeC">Movie CRED</a>
+                        <a href="#" class="gXOPeC">Theater CRED</a>
+                        <a href="#" class="gXOPeC">Event CRED </a>
+                    </cfif>
+                    
                 </div>
             </div>
         </div>

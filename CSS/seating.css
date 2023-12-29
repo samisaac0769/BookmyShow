@@ -88,7 +88,7 @@ body {
 .selected {
     user-select: none;
     border: 1px solid #1ea83c;
-    background-color:#1ea83c ;
+    background-color: #1ea83c;
     width: 25px;
     height: 25px;
     border-radius: 2px;
@@ -135,5 +135,45 @@ body {
     border-radius: 8px;
     cursor: pointer;
     min-height: 40px;
-    max-width: 400px
+    max-width: 400px;
+
+}
+
+
+.infoicon {
+    color: black;
+    font-size: 14px !important;
+}
+
+.seatinfo {
+    font-size: 14px;
+    color: #666666;
+}
+
+.infobox {
+    background-color: #fff;
+    user-select: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+}
+
+.Bestseller {
+    box-shadow: inset 0 0 2px 2px #fcc42d;
+    border: 1px solid #fcc42d;
+}
+
+.Available {
+    border: 1px solid #1ea83c;
+}
+
+.Selected{
+    border: 1px solid #1ea83c;
+    background-color: #1ea83c;
+}
+
+.sold{
+    border: 1px solid #e0dbdb;
+    background-color: #e0dbdb;
+    /* visibility: hidden; */
 }
