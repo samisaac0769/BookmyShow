@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.tittle {
+    font-size: 20px;
+    font-weight: 500;
+    color: #3d3c3c;
+
+}
+
+.table tbody tr td {
+    color: #666;
+    font-size: 15px;
+}
+
+.table tbody tr td button {
+    border: none;
+    outline: none;
+
+}
+
+.alter-btns{
+    display: flex;
+    gap: 30px;
+}
+
+.add{
+    padding: 7px 40px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    color: black;
+}
+
+.add:hover{
+    background-color: green;
+    color: white    ;
+}
+
+
+.modal-content{
+    width: 150% !important;
+}
+
+.modal-dialog{
+    max-width: 90% !important;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-content{ 
+    width: 70% !important;
+}
+
+.Incinemas {
+    background-color: black;
+    color: antiquewhite;
+    padding: 8px;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.posterImg {
+    width: 76.4%;
+    border-radius: 8px;
+}
+
+.posterImg img{
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}

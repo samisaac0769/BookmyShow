@@ -2,7 +2,7 @@
     <cfset this.name = "BookMyShow"> 
     <cfset this.applicationTimeout = createTimeSpan(0, 0, 60, 0)> 
     <cfset this.sessionManagement = true> 
-    <cfset this.sessionTimeout = createTimeSpan(0, 0, 30, 10)> 
+    <cfset this.sessionTimeout = createTimeSpan(0, 0, 0, 10)> 
     <cfset this.datasource = "BookMyShow">
     
     
@@ -18,12 +18,12 @@
     <cffunction name="onRequestStart" access="public" returntype="boolean">
         <cfargument name="targetPage" type="string" required="false">
         
-        <!--- Check if it's an AJAX request --->
+        <!--- Check if it's an AJAX request
         <cfif NOT IsAjaxRequest()>
             <cfif (!StructKeyExists(session, "login") || session.login EQ "") && arguments.targetPage NEQ '/BookmyShow/firstpage.cfm'>
                 <cflocation url="firstpage.cfm">
             </cfif>
-        </cfif>
+        </cfif> --->
         
         <cfreturn true>
     </cffunction>
