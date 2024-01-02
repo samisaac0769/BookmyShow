@@ -61,6 +61,10 @@
     </cffunction>
 
     <cffunction  name="eventList" returntype="query">
+        <cfargument  name="date" default="">
+        <cfargument  name="language"  default="">
+        <cfargument  name="catagery"  default="">
+
         <cfquery name="qryeventList">
             SELECT
                 el.eventid,el.eventname,el.eventposter,el.fromdate,el.venue,el.price,ec.catagery
@@ -73,6 +77,7 @@
             ORDER BY
                 el.eventId DESC;
         </cfquery>
+        
         <cfreturn qryeventList>
     </cffunction>
 

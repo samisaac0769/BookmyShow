@@ -102,3 +102,71 @@ a {
     line-height: 1.5;
     font-size: 15px
 }
+
+.more {
+    margin-right: 10px;
+}
+
+.material-symbols-outlined {
+    cursor: pointer;
+}
+
+.filt-head {
+    font-size: 14px;
+    color: #333333;
+}
+
+.clear {
+    font-size: 12px;
+    color: #333333;
+    cursor: pointer;
+}
+
+.clear:hover {
+    color: #f84464;
+}
+
+.filt-head {
+    cursor: pointer;
+}
+
+.datepicker {
+    background-color: #f84464;
+    padding: 5px 15px;
+    text-align: center;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    color: white;
+    display: none;
+}
+
+
+.datepicker::placeholder {
+    color: white;
+}
+
+.filt-language, .cata-language{
+    color: #dc354b;
+    font-size: 14px;
+    text-align: center;
+    padding: 5px 12px;
+    cursor: pointer;
+    border: 1px solid #e5e5e5;
+    user-select: none;
+}
+
+.langoption, .cataoption{
+    display: none;
+}
+
+.filter-btn{
+    width: 90%;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #dc354b;
+    color: #dc354b;
+    border-radius: 8px;
+}
