@@ -2,11 +2,13 @@
     <cfset this.name = "BookMyShow"> 
     <cfset this.applicationTimeout = createTimeSpan(0, 0, 60, 0)> 
     <cfset this.sessionManagement = true> 
-    <cfset this.sessionTimeout = createTimeSpan(0, 0, 0, 10)> 
+    <cfset this.sessionTimeout = createTimeSpan(0, 0, 30, 10)> 
     <cfset this.datasource = "BookMyShow">
     
     
-    <cffunction name="onApplicationStart">
+    <cffunction name="onApplicationStart" returntype="boolean">
+        <cfset application.key = "Yk42vN81BMLbIjWZFpUsZw==">
+        <cfreturn true>
     </cffunction>
 
     <cffunction name="onSessionStart">

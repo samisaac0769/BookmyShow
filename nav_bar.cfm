@@ -28,7 +28,7 @@
                     </a>
                     <div class="searchArea">
                         <span class="material-symbols-outlined">search</span>
-                        <input class="search" placeholder="Search for Movies, Events, Plays, Sports and Activities">
+                        <input class="search" id="searchbox" name="searchbox" placeholder="Search for Movies, Events, Plays, Sports and Activities">
                     </div>
                 </div>
                 <div class="d-flex"> 

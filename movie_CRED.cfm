@@ -19,11 +19,13 @@
 
     <!-- Include Others -->
     <link href="CSS/movie_cred.css" rel="stylesheet">
-    <script src="JavaScript/movie_cred.js"></script>
+    <script src="JavaScript/movie-cred.js"></script>
 </head>
 <body>
     <cfinclude  template="nav_bar.cfm"/>
     <cfoutput>
+        <cfobject component="Components/movie_cred" name="movieCred">
+        <cfset local.movielist = movieCred.getMovieList()>
         <div class="px-5 py-4">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="tittle">Movie CRED</div>
@@ -43,14 +45,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <cfloop from="1" to="5" index="i">
+                        <cfloop query="#local.movielist#">
                             <tr>
-                                <td class="fw-bold">#i#</td>
-                                <td>Salaar: Cease Fire - Part 1</td>
-                                <td>Telugu,Hindi,Malayalam,Kannada,Tamil</td>
-                                <td>2h 55m</td>
+                                <td class="fw-bold">#local.movielist.movieid#</td>
+                                <td>#local.movielist.moviename#</td>
+                                <td>#local.movielist.movielanguages#</td>
+                                <td>#local.movielist.relesedate#</td>
                                 <td class="alter-btns">
-                                    <button data-bs-toggle="modal" data-bs-target="##viewpage"><i class="fa-solid fa-eye fa-lg" style="color: ##1522d5;"></i></button>
+                                    <button class="view-btn" data-movieid="#local.movielist.movieid#"  data-bs-toggle="modal" data-bs-target="##viewpage"><i class="fa-solid fa-eye fa-lg" style="color: ##1522d5;"></i></button>
                                     <button><i class="fa-solid fa-pen-to-square fa-lg" style="color: ##1bb125;"></i></button>
                                     <button  data-bs-toggle="modal" data-bs-target="##deletePage"><i class="fa-solid fa-trash fa-lg" style="color: ##f70202;"></i></button>
                                 </td>
@@ -64,40 +66,63 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                            <h5 class="modal-title" id="Label">Modal title</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body row mt-2 ">
                                 <div class="col-5 d-flex justify-content-center border-end" >
                                     <div class="posterImg d-flex flex-column">
-                                        <img src="Assets/movieposter/animal-poster.jpg" width="250">
+                                        <img id="movieposter" width="250">
                                         <div class="Incinemas">In cinemas</div>
                                     </div>
                                 </div>
                                 <div class="col-7 px-2">
-                                    <table>
-                                        <tr>
-                                            <th>Movie Name:</th>
-                                            <td>Salaar: Cease Fire - Part 1</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Languages:</th>
-                                            <td>Telugu,Hindi,Malayalam,Kannada,Tamil</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Running Time:</th>
-                                            <td>2h 22m</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Release Date:</th>
-                                            <td>12-11-2023</td>
-                                        </tr>
-                                    </table>
+                                    <div class="d-flex flex-column gap-2">
+                                        <div class="d-flex align-items-center">
+                                            <span class="label">Name:</span>
+                                            <span class="tdvalue" id="moviename"></span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="label">Languages:</span>
+                                            <span class="tdvalue" id="lang"></span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="label">Genres:</span>
+                                            <span class="tdvalue" id="genres"></span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="label">Screens:</span>
+                                            <span class="tdvalue" id="screen"></span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="label">Certificate:</span>
+                                            <span class="tdvalue" id="cert"></span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="label">Release Date:</span>
+                                            <span class="tdvalue" id="reldate"></span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="label">Running Time:</span>
+                                            <span class="tdvalue" id="runtime"></span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="label">Votings:</span>
+                                            <span class="tdvalue" id="vote"></span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="label">Rating:</span>
+                                            <span class="tdvalue" id="rating"></span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="label me-2">About:</span>
+                                            <span class="tdvalue f-flex flex-wrap" id="about"></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
+                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
                         </div>
                     </div>
                 </div>
@@ -113,7 +138,7 @@
                         <div class="modal-body">
                             <p>Are you sure you want to delete this movie</p>
 
-                            <p>Once you delete id you can't retrive it !..</p>
+                            <p>Once you delete it you can't retrive it !..</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>

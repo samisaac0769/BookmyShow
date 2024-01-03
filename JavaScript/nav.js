@@ -177,6 +177,35 @@ $(document).ready(function () {
             });
         }
         
+    });
+
+
+    //search operation
+    $("#searchbox").keypress(function (e) {
+        var key = e.which;
+        if (key == 13)  // the enter key code
+        {
+            let search = $("#searchbox").val();
+            console.log(search);
+            $.ajax({
+                url: "Components/eventfilter.cfc?method=search",
+                type: "post",
+                data: {
+                    searchword: search
+                },
+                success: function (responce) {
+                    
+                    let result = $(responce).find("string").text();
+                    // var intValue = parseInt(result);
+                    console.log(result);
+                    document.location.href = result;
+                }
+                // },
+                // error: function (error) {
+                //     alert("Something went wrong");
+                // }
+            });
+        }
     })
     
 });
