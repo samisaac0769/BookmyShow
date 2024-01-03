@@ -36,6 +36,7 @@
     outline: none;
     border-radius: 10px;
     color: black;
+    background-color:#a7a5a5;
 }
 
 .add:hover{
@@ -70,11 +71,27 @@
 }
 
 .posterImg {
-    width: 76.4%;
+    width: 250px;
     border-radius: 8px;
 }
 
 .posterImg img{
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+}
+
+.label {
+    flex-basis: 30%;
+    /* Adjust as needed */
+    font-weight: bold;
+}
+
+.tdvalue{
+    font-size: 13px;
+    color: #3d3c3c;
+
+}
+
+.imgposter{
+    width: 100%;
 }

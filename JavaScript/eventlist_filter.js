@@ -2,7 +2,6 @@ $(document).ready(function () {
     $("#datepicker").val("");
     $("#datepicker").datepicker({
         minDate: 0,
-        maxDate: "+4D",
         defaultDate: 0,
         onSelect: function (date) {
             console.log(date);
@@ -115,7 +114,11 @@ $(document).ready(function () {
         let cateid = $(this).attr('value');
         $("#selected-cate").val(cateid)
     });
+
+   
 });
+
+//filter operation
 
 function filter() {
     let selecteddate = $("#datepicker").val();

@@ -13,7 +13,16 @@
     <body>
         <cfinclude  template="nav_bar.cfm">
         
-            <cfset local.movieid = id>
+            <cfif structKeyExists(form , "id")>
+                <cfset local.movieid = id>
+            <cfelse>
+                <cfparam name="URl.id" default="">
+                <cfset local.encryptedMovieId = replace(id,"!","+", "all")>
+                <cfset local.encryptedMovieId = replace(local.encryptedMovieId,"@","\", "all")>
+                <cfset local.decryptedMovieId = decrypt(local.encryptedMovieId,#application.key#, 'AES', 'Base64')> 
+                <cfset local.movieid = local.decryptedMovieId>  
+            </cfif>
+            
             <cfset local.movieDetails = createObject("component", "Components/moviedetail")>
             <cfoutput>
                 <cfset local.movie =local.movieDetails.getMovieById(local.movieid)>

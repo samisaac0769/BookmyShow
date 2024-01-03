@@ -23,7 +23,16 @@
 <body>
     <cfinclude  template="nav_bar.cfm">
     <cfoutput>
-        <cfset local.eventId = form.eventid>
+        
+        <cfif structKeyExists(form , "eventid")>
+               <cfset local.eventId = form.eventid>
+            <cfelse>
+                <cfparam name="URl.id" default="">
+                <cfset local.encryptedeventId = replace(id,"!","+", "all")>
+                <cfset local.encryptedeventId = replace(local.encryptedeventId,"@","\", "all")>
+                <cfset local.decryptedeventId = decrypt(local.encryptedeventId,#application.key#, 'AES', 'Base64')> 
+                <cfset local.eventId = local.decryptedeventId> 
+            </cfif>
         <cfobject component="Components/eventdetail" name="eventDetails">
         <cfset local.event = eventDetails.getEventDetailById(local.eventId)>
         <div class="eventdetails"> 

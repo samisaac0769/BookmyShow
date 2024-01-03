@@ -22,6 +22,8 @@
 </head>
 <body>
     <cfinclude  template="nav_bar.cfm">
+    
+    
     <cfinvoke component="Components/firstpage"  method="eventList" returnvariable="eventList"></cfinvoke>
     <cfset local.qryResponce = eventList>
     <cfparam name="form.date" default="">

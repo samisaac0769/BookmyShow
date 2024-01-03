@@ -1,5 +1,5 @@
 <cfcomponent>
-    <cffunction  name="getMovieById">
+    <cffunction  name="getMovieById" returntype="query">
         <cfargument  name="movieId">
         <cfquery name="qryMovieDetails">
         SELECT 
@@ -38,7 +38,7 @@
         <cfreturn qryMovieDetails>
     </cffunction>
 
-    <cffunction  name="getCast">
+    <cffunction  name="getCast" returntype="query">
         <cfargument  name="movieId">
         <cfquery name="qryGetCast">
         SELECT
