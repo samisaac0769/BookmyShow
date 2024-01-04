@@ -11,12 +11,13 @@ $(document).ready(function () {
 
     });
 
-    document.getElementById("countinue").setAttribute("disabled", "disabled");
+    $("#countinue").prop("disabled", true);
+
     // allow only numbers when u try to  enter a value
     $("#mobileNo").on("keypress", function (e) {
         $('#mobileNo').css('border-bottom-color', 'rgb(248, 68, 100)');
 
-        var x = e.which || e.keycode;
+        var x = e.which || e.keyCode;
         if ((x >= 48 && x <= 57)) {
             $("#mobileNo").on("input", function () {
                 let loginumber = $(this).val();
@@ -36,7 +37,10 @@ $(document).ready(function () {
         }
     });
 
-    document.getElementById("secCountinue").setAttribute("disabled", "disabled");
+    //document.getElementById("secCountinue").setAttribute("disabled", "disabled"); when i give this i through an error 
+    // (Specific Error: Cannot read properties of null(reading 'setAttribute')
+    // The code is trying to perform an operation involving the setAttribute method on an object that is null.) so i use the alternative it's below
+    $("#secCountinue").prop("disabled", true);
     $("#countinue").on("click", function (e) {
         e.preventDefault();
         // Toggle the visibility of the two modal contents
@@ -78,7 +82,7 @@ $(document).ready(function () {
     });
 
     $("#secCountinue").on("click", function (e) {
-        
+
         e.preventDefault();
         let inputOTP = $("#otp1").val() + $("#otp2").val() + $("#otp3").val() + $("#otp4").val() + $("#otp5").val() + $("#otp6").val();
         if (inputOTP.trim() == otp) {
@@ -94,7 +98,7 @@ $(document).ready(function () {
                     // console.log(data);
                     let result = $(data).find("string").text();
                     //alert(result);
-                    
+
                     if (result == "true") {
                         $('#otpError').text("");
                         $('.jLBVFy').val("");
@@ -152,7 +156,7 @@ $(document).ready(function () {
         var role = document.getElementById('roleid').value.trim();
         let valid = validateForm(e);
         if (valid == true) {
-            
+
             $.ajax({
                 url: "Components/nav_bar.cfc?method=signIn",
                 type: "post",
@@ -176,7 +180,7 @@ $(document).ready(function () {
                 }
             });
         }
-        
+
     });
 
 
@@ -194,20 +198,23 @@ $(document).ready(function () {
                     searchword: search
                 },
                 success: function (responce) {
-                    
                     let result = $(responce).find("string").text();
-                    // var intValue = parseInt(result);
-                    console.log(result);
-                    document.location.href = result;
+                    if (result == "false") {
+                        console.log(">>>>>>> No Data's");
+                        document.location.reload();
+                    }
+                    else {
+                        console.log(result);
+                        document.location.href = result;
+                    }
+                },
+                error: function (error) {
+                    alert("Something went wrong");
                 }
-                // },
-                // error: function (error) {
-                //     alert("Something went wrong");
-                // }
             });
         }
     })
-    
+
 });
 
 function startCountdown() {
@@ -402,7 +409,7 @@ function mailIdValidation() {
 }
 
 function validateForm(e) {
-    
+
 
 
     var isname = nameValidation();

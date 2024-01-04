@@ -56,7 +56,7 @@
             <cfset local.movieid = qrySearchMovie.movieid>
             <cfset local.encryptedMovieId= encrypt(local.movieid,application.key,'AES', 'Base64')>
             <cfset local.encryptedMovieId = replace(local.encryptedMovieId, "+", "!", "all")>
-            <cfset local.encryptedMovieId = replace(local.encryptedMovieId, "\", "@", "all")>--->
+            <cfset local.encryptedMovieId = replace(local.encryptedMovieId, "\", "@", "all")>
             <cfset local.redirectURL = "moviedetailpage.cfm?id=#local.encryptedMovieId#">
             <cfreturn local.redirectURL>
         </cfif>
@@ -68,11 +68,46 @@
             <cfset local.eventid = qrySearchEvent.eventid>
             <cfset local.encryptedeventId= encrypt(local.eventid,application.key,'AES', 'Base64')>
             <cfset local.encryptedeventId = replace(local.encryptedeventId, "+", "!", "all")>
-            <cfset local.encryptedeventId = replace(local.encryptedeventId, "\", "@", "all")>--->
+            <cfset local.encryptedeventId = replace(local.encryptedeventId, "\", "@", "all")>
             <cfset local.redirectURL = "eventDetailpage.cfm?id=#local.encryptedeventId#">
             <cfreturn local.redirectURL>
         </cfif>
 
+        <cfquery name="qrySearchTheater">
+            SELECT *FROM Theaters WHERE TheaterName = <cfqueryparam value="#arguments.searchword#" cfsqltype="varchar">
+        </cfquery>
+        <cfif qrySearchTheater.recordcount gt 0>
+            <cfset local.Theaterid = qrySearchTheater.theaterid>
+            <cfset local.encryptedTheaterId= encrypt(local.Theaterid,application.key,'AES', 'Base64')>
+            <cfset local.encryptedTheaterId = replace(local.encryptedTheaterId, "+", "!", "all")>
+            <cfset local.encryptedTheaterId = replace(local.encryptedTheaterId, "\", "@", "all")>
+            <cfset local.redirectURL = "theaterSearchList.cfm?id=#local.encryptedTheaterId#&name=#qrySearchTheater.TheaterName#">
+            <cfreturn local.redirectURL>
+        </cfif>
+        <cfreturn "false">
+    </cffunction>
+
+    <cffunction name="getMoviesInTheaterById" access="public" returntype="query">
+        <cfargument name="theaterId" default="">
+        <cfquery name="qryGetMoviesInTheaterById">
+            SELECT
+                M.movieId,
+                M.movieName,
+                (
+                    SELECT STRING_AGG(CONVERT(varchar(MAX), TT.timing), ', ')
+                    FROM theatertiming AS TT
+                    WHERE T.theaterId = TT.theaterId
+                ) AS theaterTimings
+            FROM
+                movielist AS M
+            JOIN
+                movietheater AS MT ON M.movieId = MT.movieId
+            JOIN
+                Theaters AS T ON MT.theaterId = T.theaterId
+            WHERE
+                T.theaterId = <cfqueryparam value="#arguments.theaterId#" cfsqltype="integer">
+        </cfquery>
+        <cfreturn qryGetMoviesInTheaterById>
     </cffunction>
 
 </cfcomponent>

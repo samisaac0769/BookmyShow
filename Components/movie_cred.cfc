@@ -31,7 +31,9 @@
                     where ml.movieId = msm.movieid
                 ) AS moviescreen
             FROM
-                movielist ml;
+                movielist ml
+            WHERE
+                status = <cfqueryparam value="true" cfsqltype="bit">;
         </cfquery>
         <cfreturn quyGetMovieList>
     </cffunction>
@@ -73,5 +75,15 @@
             ml.movieId = <cfqueryparam value="#arguments.movieId#" CFSQLType ="CF_SQL_INTEGER">;
         </cfquery>
         <cfreturn qryMovieDetailsforAdmin>
+    </cffunction>
+
+    <cffunction name="deleteMovieById" returntype="string" access="remote">
+        <cfargument  name="movieId">
+        <cfquery name="deleteMovieById">
+            UPDATE movielist
+            SET status = 0
+            WHERE movieId = <cfqueryparam value="#arguments.movieId#" cfsqltype="integer">;
+        </cfquery>
+        <cfreturn "true">
     </cffunction>
 </cfcomponent>

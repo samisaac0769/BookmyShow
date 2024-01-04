@@ -20,12 +20,12 @@
     <cffunction name="onRequestStart" access="public" returntype="boolean">
         <cfargument name="targetPage" type="string" required="false">
         
-        <!--- Check if it's an AJAX request
+        <!--- Check if it's an AJAX request--->
         <cfif NOT IsAjaxRequest()>
             <cfif (!StructKeyExists(session, "login") || session.login EQ "") && arguments.targetPage NEQ '/BookmyShow/firstpage.cfm'>
                 <cflocation url="firstpage.cfm">
             </cfif>
-        </cfif> --->
+        </cfif> 
         
         <cfreturn true>
     </cffunction>
