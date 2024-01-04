@@ -37,10 +37,10 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                        <th scope="col">MOvie Id</th>
+                        <th scope="col">Movie Id</th>
                         <th scope="col">Movie Name</th>
                         <th scope="col">Languages</th>
-                        <th scope="col">Running Time</th>
+                        <th scope="col">Release Date</th>
                         <th></th>
                         </tr>
                     </thead>
@@ -54,7 +54,7 @@
                                 <td class="alter-btns">
                                     <button class="view-btn" data-movieid="#local.movielist.movieid#"  data-bs-toggle="modal" data-bs-target="##viewpage"><i class="fa-solid fa-eye fa-lg" style="color: ##1522d5;"></i></button>
                                     <button><i class="fa-solid fa-pen-to-square fa-lg" style="color: ##1bb125;"></i></button>
-                                    <button  data-bs-toggle="modal" data-bs-target="##deletePage"><i class="fa-solid fa-trash fa-lg" style="color: ##f70202;"></i></button>
+                                    <button class="delete-btn" data-movieid="#local.movielist.movieid#" data-bs-toggle="modal" data-bs-target="##deletePage"><i class="fa-solid fa-trash fa-lg" style="color: ##f70202;"></i></button>
                                 </td>
                             </tr>
                         </cfloop>
@@ -63,8 +63,8 @@
             </div>
             <!-- Modal -->
             <div class="modal fade" id="viewpage" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
+                <div class="modal-dialog modal-dialog-additional">
+                    <div class="modal-content modal-content-width ">
                         <div class="modal-header">
                             <h5 class="modal-title" id="Label">Modal title</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -142,7 +142,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                            <button type="button" class="btn btn-danger">Yes</button>
+                            <button type="button" id="deletemovie" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
                         </div>
                     </div>
                 </div>

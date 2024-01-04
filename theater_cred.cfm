@@ -19,40 +19,41 @@
 
     <!-- Include Others -->
     <link href="CSS/movie_cred.css" rel="stylesheet">
-    <script src=""></script>
+    <script src="JavaScript/theater-cred.js"></script>
 </head>
 <body>
     <cfinclude  template="nav_bar.cfm"/>
     <cfoutput>
+        <cfobject component="Components/theater_cred" name="theaters">
+        <cfset local.theaterlist = theaters.theaterList()>
         <div class="px-5 py-4">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="tittle">Theater CRED</div>
                 <div>
-                    <button class="add">Add Movie</button>
+                    <button class="add">Add Theater</button>
                 </div>
             </div>
             <div class="mt-4">
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                        <th scope="col">MOvie Id</th>
-                        <th scope="col">Movie Name</th>
-                        <th scope="col">Languages</th>
-                        <th scope="col">Running Time</th>
+                        <th scope="col">Theater Id</th>
+                        <th scope="col">Theater Name</th>
+                        <th scope="col">Location</th>
+
                         <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <cfloop from="1" to="5" index="i">
+                        <cfloop query="#local.theaterlist#">
                             <tr>
-                                <td class="fw-bold">#i#</td>
-                                <td>Salaar: Cease Fire - Part 1</td>
-                                <td>Telugu,Hindi,Malayalam,Kannada,Tamil</td>
-                                <td>2h 55m</td>
+                                <td class="fw-bold">#local.theaterlist.theaterId#</td>
+                                <td>#local.theaterlist.TheaterName#</td>
+                                <td>#local.theaterlist.location#</td>
                                 <td class="alter-btns">
-                                    <button data-bs-toggle="modal" data-bs-target="##viewpage"><i class="fa-solid fa-eye fa-lg" style="color: ##1522d5;"></i></button>
+                                    <button class="view-btn" data-bs-toggle="modal" data-bs-target="##viewpage"><i class="fa-solid fa-eye fa-lg" style="color: ##1522d5;"></i></button>
                                     <button><i class="fa-solid fa-pen-to-square fa-lg" style="color: ##1bb125;"></i></button>
-                                    <button  data-bs-toggle="modal" data-bs-target="##deletePage"><i class="fa-solid fa-trash fa-lg" style="color: ##f70202;"></i></button>
+                                    <button class="delete-btn" data-theaterId="#local.theaterlist.theaterId#" data-bs-toggle="modal" data-bs-target="##deletePage"><i class="fa-solid fa-trash fa-lg" style="color: ##f70202;"></i></button>
                                 </td>
                             </tr>
                         </cfloop>
@@ -61,8 +62,8 @@
             </div>
             <!-- Modal -->
             <div class="modal fade" id="viewpage" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
+                <div class="modal-dialog modal-dialog-additional">
+                    <div class="modal-content  modal-content-width">
                         <div class="modal-header">
                             <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -97,7 +98,7 @@
                             </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
                         </div>
                     </div>
                 </div>
@@ -117,7 +118,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                            <button type="button" class="btn btn-danger">Yes</button>
+                            <button type="button" class="btn btn-danger" id="deleteTheater">Yes</button>
                         </div>
                     </div>
                 </div>

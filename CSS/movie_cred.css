@@ -44,18 +44,13 @@
     color: white    ;
 }
 
-
-.modal-content{
-    width: 150% !important;
-}
-
-.modal-dialog{
+.modal-dialog-additional{
     max-width: 90% !important;
     display: flex;
     justify-content: center;
 }
 
-.modal-content{ 
+.modal-content-width { 
     width: 70% !important;
 }
 
@@ -82,14 +77,12 @@
 
 .label {
     flex-basis: 30%;
-    /* Adjust as needed */
     font-weight: bold;
 }
 
 .tdvalue{
     font-size: 13px;
     color: #3d3c3c;
-
 }
 
 .imgposter{

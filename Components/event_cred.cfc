@@ -7,6 +7,8 @@
                 fullEventList el
             JOIN
                 eventCatagery ec ON ec.cataid = el.cataid
+            WHERE
+                status = <cfqueryparam value="true" cfsqltype="bit"> 
             GROUP BY
                 el.eventid, el.eventname, el.eventposter, el.fromdate, el.venue, el.price, ec.catagery
             ORDER BY
@@ -32,5 +34,15 @@
                 fullEventList.eventid = <cfqueryparam value="#arguments.eventId#" cfsqltype="integer">;
         </cfquery>
         <cfreturn qryGetEventByIdForAdmin>
+    </cffunction>
+
+    <cffunction name="deleteEventById" returntype="string" access="remote">
+        <cfargument  name="eventId">
+        <cfquery name="deleteEventById">
+            UPDATE fullEventList
+            SET status = 0
+            WHERE eventid = <cfqueryparam value="#arguments.eventId#" cfsqltype="integer">;
+        </cfquery>
+        <cfreturn "true">
     </cffunction>
 </cfcomponent>

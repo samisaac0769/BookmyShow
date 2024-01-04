@@ -14,6 +14,8 @@
                 MGMapping mgm ON ml.movieId = mgm.movieid
             JOIN
                 movieGenresList mg ON mgm.genresid = mg.genresId
+            WHERE
+                status = <cfqueryparam value="true" cfsqltype="bit"> 
             GROUP BY
                 ml.movieId, ml.moviename, ml.movieposter, ml.rating, ml.votings
             ORDER BY
@@ -29,6 +31,8 @@
                 fullEventList el
             JOIN
                 eventCatagery ec ON ec.cataid = el.cataid
+            WHERE
+                status = <cfqueryparam value="true" cfsqltype="bit"> 
             GROUP BY
                 el.eventid, el.eventname, el.eventposter, el.fromdate, el.venue, el.price, ec.catagery
             ORDER BY
@@ -52,6 +56,8 @@
                 MGMapping mgm ON ml.movieId = mgm.movieid
             JOIN
                 movieGenresList mg ON mgm.genresid = mg.genresId
+            WHERE
+                status = <cfqueryparam value="true" cfsqltype="bit"> 
             GROUP BY
                 ml.movieId, ml.moviename, ml.movieposter, ml.rating, ml.votings
             ORDER BY
@@ -72,6 +78,8 @@
                 fullEventList el
             JOIN
                 eventCatagery ec ON ec.cataid = el.cataid
+            WHERE
+                status = <cfqueryparam value="true" cfsqltype="bit"> 
             GROUP BY
                 el.eventid, el.eventname, el.eventposter, el.fromdate, el.venue, el.price, ec.catagery
             ORDER BY

@@ -14,7 +14,7 @@
     <cfinclude  template="nav_bar.cfm">
     <cfinclude  template="slide.cfm">
     <cfoutput>
-            <div class="d-flex flex-column mx-5 py-5 gap-5"> 
+            <div class="d-flex flex-column mx-5 py-3 gap-5"> 
                 <div class="d-flex flex-column gap-1">
                     <div class="d-flex justify-content-between "> 
                         <h2 class="reco-movie">Recommended Movies<h2>

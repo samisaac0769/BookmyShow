@@ -40,6 +40,28 @@ $(document).ready(function () {
             }
         });
     });
+
+    $(".delete-btn").click(function () {
+        var selectedmovie = $(this).data("movieid");
+        $("#deletemovie").click(function () {
+            $.ajax({
+                url: "Components/movie_cred.cfc?method=deleteMovieById",
+                type: "post",
+                data: {
+                    movieId: selectedmovie
+                },
+                success: function (data) {
+                    console.log(data);
+                    var result = $(data).find("string").text();
+                    if (result == "true") {
+                        alert("This Movie is Deleted Successfully....");
+                        location.reload();
+                    }
+                }
+            });
+        });
+
+    });
 });
 
     
