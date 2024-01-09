@@ -201,9 +201,9 @@
                         <a href="#" class="gXOPeC">Offers</a>
                         <a href="#" class="gXOPeC">Gift Cards</a>
                     <cfelse>
-                        <a href="movie_CRED.cfm" class="gXOPeC">Movie CRED</a>
-                        <a href="theater_cred.cfm" class="gXOPeC">Theater CRED</a>
-                        <a href="event_cred.cfm" class="gXOPeC">Event CRED </a>
+                        <a href="movie_CRED.cfm" class="gXOPeC">Movie CRUD</a>
+                        <a href="theater_cred.cfm" class="gXOPeC">Theater CRUD</a>
+                        <a href="event_cred.cfm" class="gXOPeC">Event CRUD </a>
                     </cfif>
                     
                 </div>

@@ -28,7 +28,7 @@
         <cfset local.theaterlist = theaters.theaterList()>
         <div class="px-5 py-4">
             <div class="d-flex justify-content-between align-items-center">
-                <div class="tittle">Theater CRED</div>
+                <div class="tittle">Theater CRUD</div>
                 <div>
                     <button class="add">Add Theater</button>
                 </div>
@@ -40,7 +40,6 @@
                         <th scope="col">Theater Id</th>
                         <th scope="col">Theater Name</th>
                         <th scope="col">Location</th>
-
                         <th></th>
                         </tr>
                     </thead>
@@ -51,14 +50,14 @@
                                 <td>#local.theaterlist.TheaterName#</td>
                                 <td>#local.theaterlist.location#</td>
                                 <td class="alter-btns">
-                                    <button class="view-btn" data-bs-toggle="modal" data-bs-target="##viewpage"><i class="fa-solid fa-eye fa-lg" style="color: ##1522d5;"></i></button>
+                                    <button class="view-btn" data-theaterid="#local.theaterlist.theaterId#" data-bs-toggle="modal" data-bs-target="##viewpage"><i class="fa-solid fa-eye fa-lg" style="color: ##1522d5;"></i></button>
                                     <button><i class="fa-solid fa-pen-to-square fa-lg" style="color: ##1bb125;"></i></button>
-                                    <button class="delete-btn" data-theaterId="#local.theaterlist.theaterId#" data-bs-toggle="modal" data-bs-target="##deletePage"><i class="fa-solid fa-trash fa-lg" style="color: ##f70202;"></i></button>
+                                    <button class="delete-btn" data-theaterid="#local.theaterlist.theaterId#" data-bs-toggle="modal" data-bs-target="##deletePage"><i class="fa-solid fa-trash fa-lg" style="color: ##f70202;"></i></button>
                                 </td>
                             </tr>
                         </cfloop>
                     </tbody>
-                </table>
+                </table>    
             </div>
             <!-- Modal -->
             <div class="modal fade" id="viewpage" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -71,34 +70,33 @@
                         <div class="modal-body row mt-2 ">
                                 <div class="col-5 d-flex justify-content-center border-end" >
                                     <div class="posterImg d-flex flex-column">
-                                        <img src="Assets/movieposter/animal-poster.jpg" width="250">
-                                        <div class="Incinemas">In cinemas</div>
+                                        <img src="Assets/popcon.jpg" width="250">
+                                        <div class="Incinemas">Enjoy your show with us</div>
                                     </div>
                                 </div>
                                 <div class="col-7 px-2">
-                                    <table>
-                                        <tr>
-                                            <th>Movie Name:</th>
-                                            <td>Salaar: Cease Fire - Part 1</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Languages:</th>
-                                            <td>Telugu,Hindi,Malayalam,Kannada,Tamil</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Running Time:</th>
-                                            <td>2h 22m</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Release Date:</th>
-                                            <td>12-11-2023</td>
-                                        </tr>
-                                    </table>
+                                    <div class="d-flex flex-column gap-2">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <span class="label">Name:</span>
+                                            <span class="tdvalue me-3 " id="theatername"></span>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <span class="label">Location:</span>
+                                            <span class="tdvalue me-3 text-end" id="location"></span>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <span class="label">Show Times:</span>
+                                            <span class="tdvalue me-3 text-end" id="time"></span>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <span class="label">Address:</span>
+                                            <span class="tdvalue me-3 text-end" id="address"></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Ok</button>
                         </div>
                     </div>
                 </div>
@@ -112,13 +110,12 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <p>Are you sure you want to delete this movie</p>
-
-                            <p>Once you delete id you can't retrive it !..</p>
+                            <p>Are you sure you want to delete this theater</p>
+                            <p>Once you delete it you can't retrive it !..</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                            <button type="button" class="btn btn-danger" id="deleteTheater">Yes</button>
+                            <button type="button" class="btn btn-danger" id="deleteTheater" data-bs-dismiss="modal">Yes</button>
                         </div>
                     </div>
                 </div>

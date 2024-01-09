@@ -30,19 +30,7 @@
     gap: 30px;
 }
 
-.add{
-    padding: 7px 40px;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    color: black;
-    background-color:#a7a5a5;
-}
 
-.add:hover{
-    background-color: green;
-    color: white    ;
-}
 
 .modal-dialog-additional{
     max-width: 90% !important;
@@ -87,4 +75,25 @@
 
 .imgposter{
     width: 100%;
+}
+
+.modal-dialog-add {
+    max-width: 60% !important;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-content-add {
+    width: 70% !important;
+}
+
+.form-input{
+    outline: none;
+    width: 50%;
+}
+
+.form-label{
+    font-size: 16px;
+    font-weight: 500;
+    color: #666;
 }

@@ -69,6 +69,7 @@ $(document).ready(function () {
     
     $(".delete-btn").click(function () { 
         var selectedEvent = $(this).data("eventid");
+        console.log(selectedEvent);
         $("#deleteEvent").click(function () {
             $.ajax({
                 url: "Components/event_cred.cfc?method=deleteEventById",
