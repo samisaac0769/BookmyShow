@@ -45,4 +45,31 @@
         </cfquery>
         <cfreturn "true">
     </cffunction>
+
+    <cffunction  name="insertEventValue" access='public' >
+       
+        <cfargument name="eventname" type="string">
+        <cfargument name="age" type="string">
+        <cfargument name="hour" type="integer">
+        <cfargument name="fromdate" type="date">
+        <cfargument name="todate" type="date">
+        <cfargument name="price" type="integer">
+        <cfargument name="venue" type="string">
+        <cfargument name="about" type="string">
+        <cfargument name="why" type="string">
+        <cfargument name="catagery" type="integer">
+        <cfargument name="language" type="integer">
+        <cfargument name="time" type="date">
+        <cfargument name="likes" type="integer">
+        <cfargument name="status" type="boolean">
+        <cfargument name="fileuploadbg" type="string">
+        <cfargument name="fileuploadimg" type="string">
+        
+      
+                 
+         
+        
+         <cflocation  url="event_cred.cfm">
+        
+    </cffunction>   
 </cfcomponent>

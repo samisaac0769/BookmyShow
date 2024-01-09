@@ -14,7 +14,7 @@ $(document).ready(function () {
                 let movieimage = $(data).find("field[name='MOVIEPOSTER'] string").text();
                 let path = "Assets/movieposter/" + movieimage;
                 $("#movieposter").attr("src",path);
-                $("#Label").text("Details of : "+ $(data).find("field[name='MOVIENAME'] string").text());
+                $("#Label").text($(data).find("field[name='MOVIENAME'] string").text());
                 $("#moviename").text($(data).find("field[name='MOVIENAME'] string").text());
                 $("#lang").text($(data).find("field[name='MOVIELANGUAGES'] string").text());
                 $("#genres").text($(data).find("field[name='MOVIEGENRES'] string").text());

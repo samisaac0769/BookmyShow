@@ -28,7 +28,7 @@
         <cfset local.movielist = movieCred.getMovieList()>
         <div class="px-5 py-4">
             <div class="d-flex justify-content-between align-items-center">
-                <div class="tittle">Movie CRED</div>
+                <div class="tittle">Movie CRUD</div>
                 <div>
                     <button class="add">Add Movie</button>
                 </div>
@@ -66,7 +66,7 @@
                 <div class="modal-dialog modal-dialog-additional">
                     <div class="modal-content modal-content-width ">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="Label">Modal title</h5>
+                            <h5 class="modal-title" id="Label"></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body row mt-2 ">
