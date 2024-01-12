@@ -30,7 +30,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="tittle">Theater CRUD</div>
                 <div>
-                    <button class="add">Add Theater</button>
+                    <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="##theaterForm">Add Theater</button>
                 </div>
             </div>
             <div class="mt-4">
@@ -116,6 +116,47 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                             <button type="button" class="btn btn-danger" id="deleteTheater" data-bs-dismiss="modal">Yes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade " id="theaterForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="theaterFormLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-add">
+                    <div class="modal-content modal-content-add">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="theaterFormLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearForm()" id="form-btn-close"></button>
+                        </div>
+                        <div class="modal-body row">
+                            <form>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Theater Name:</div>
+                                    <input required class="p-1 form-input" id="form-theatername" type="text" placeholder="Enter theater name">
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Location:</div>
+                                    <input required class="p-1 form-input" id="form-location" type="text" placeholder="Enter theater location">
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Address:</div>
+                                    <textarea required class="p-1 form-input" id="form-address" type="number" placeholder="Enter theater address"></textarea>
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label align-top">Show timing:</div>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <button class="btn btn-outline-primary mb-1" type="button" id="add-cloneDiv">Add</button>
+                                        <div id="show-group" style="display: none;">
+                                            <!-- Container for cloned input fields -->
+                                            <div class="d-flex gap-2 flex-column" id="cloned-inputs-container"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <input id="from-theaterId" type="hidden" name="theaterId">
+                                <div class="d-flex justify-content-center mt-2">
+                                    <button name="formsubmit" id="submitBtn" type="submit" class="btn btn-success" >Submit</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

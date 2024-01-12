@@ -90,10 +90,15 @@
 .form-input{
     outline: none;
     width: 50%;
+    color: #3d3c3c;
 }
 
 .form-label{
     font-size: 16px;
     font-weight: 500;
     color: #666;
+}
+
+.important{
+    color: red ;
 }
