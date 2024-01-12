@@ -34,4 +34,26 @@
         </cfquery>
         <cfreturn qryGetTheaterById>
     </cffunction>
+
+    <cffunction name="insertTheater" access="remote" returntype="boolean">
+        <cfargument  name="theatername">
+        <cfargument  name="location">
+        <cfargument  name="address">
+        <cfargument  name="showTimes">
+
+        <cfset local.theaterName = trim(arguments.theatername)>
+        <cfset local.location = trim(arguments.location)> 
+        
+        <cfquery name="qryCheckTheaterExist">
+            SELECT theaterid FROM Theaters
+            WHERE TheaterName = <cfqueryparam value="#local.theaterName#" cfsqltype="varchar">
+            <!---AND location = <cfqueryparam value="#local.location#" cfsqltype="varchar">--->
+        </cfquery>
+        <cfif qryCheckTheaterExist.recordcount>
+            <cfreturn true>
+        <cfelse>
+            <cfreturn false>
+        </cfif>
+        
+    </cffunction>
 </cfcomponent>

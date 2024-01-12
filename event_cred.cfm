@@ -30,7 +30,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="tittle">Event CRUD</div>
                 <div>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="##staticBackdrop">Add Event</button>
+                    <button type="button" id="addeventbtn" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="##EventForm">Add Event</button>
                 </div>
             </div>
             <div class="mt-4">
@@ -53,7 +53,7 @@
                                 <td>Rs: #local.eventList.price#/-</td>
                                 <td class="alter-btns">
                                     <button class="view-btn" data-eventid="#local.eventList.eventid#" data-bs-toggle="modal" data-bs-target="##viewpage"><i class="fa-solid fa-eye fa-lg" style="color: ##1522d5;"></i></button>
-                                    <button><i class="fa-solid fa-pen-to-square fa-lg" style="color: ##1bb125;"></i></button>
+                                    <button class="update-btn" data-eventid="#local.eventList.eventid#" data-bs-toggle="modal" data-bs-target="##EventForm"><i class="fa-solid fa-pen-to-square fa-lg" style="color: ##1bb125;"></i></button>
                                     <button class="delete-btn" data-eventid="#local.eventList.eventid#" data-bs-toggle="modal" data-bs-target="##deletePage"><i class="fa-solid fa-trash fa-lg" style="color: ##f70202;"></i></button>
                                 </td>
                             </tr>
@@ -159,78 +159,101 @@
                     </div>
                 </div>
             </div>
-            <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <cfobject component="Components/event_cred"  name="predefinefields">
+            <cfset local.language = predefinefields.getAlllanguage()>
+            <cfset local.catagery = predefinefields.getAllCatagery()>
+            <div class="modal fade " id="EventForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="EventFormLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-add">
                     <div class="modal-content modal-content-add">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h5 class="modal-title" id="EventFormLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearForm()" id="form-btn-close"></button>
                         </div>
                         <div class="modal-body row">
-                            <form action="event_cred.cfm" method="post" >
+                            <form action="event_cred.cfm" method="post" enctype="multipart/form-data">
                                 <div class="d-flex justify-content-between p-2 align-items-center">
                                     <div class="form-label">Event Name:</div class="form-label">
-                                    <input required class="p-1 form-input" type="text" name="eventname">
+                                    <input required class="p-1 form-input" id="form-eventname" type="text" name="eventname" placeholder="Enter event name">
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
                                     <div class="form-label">Age Limit:</div class="form-label">
-                                    <input required class="p-1 form-input" name="age" type="text">
+                                    <input required class="p-1 form-input" id="form-age" name="age" type="text" placeholder="Enter age limit">
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
                                     <div class="form-label">Hours:</div class="form-label">
-                                    <input required class="p-1 form-input" name="hour" type="number">
+                                    <input required class="p-1 form-input" id="form-hour" name="hour" type="number" placeholder="Enter how many hours">
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
                                     <div class="form-label">From Date:</div class="form-label">
-                                    <input required class="p-1 form-input" name="fromdate" type="date">
+                                    <input required class="p-1 form-input" id="form-fromdate" name="fromdate" type="text" placeholder="Select the starting date">
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
                                     <div class="form-label">To Date:</div class="form-label">
-                                    <input required class="p-1 form-input" name="todate" type="date">
+                                    <input required class="p-1 form-input" id="form-todate" name="todate" type="text" placeholder="Select the ending date">
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
                                     <div class="form-label">Price:</div class="form-label">
-                                    <input required class="p-1 form-input" name="price" type="number">
+                                    <input required class="p-1 form-input" id="form-price" name="price" type="number" placeholder="Enter event price">
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
                                     <div class="form-label">Venue:</div class="form-label">
-                                    <input required class="p-1 form-input" name="venue" type="text">
+                                    <input required class="p-1 form-input" id="form-venue" name="venue" type="text" placeholder="Enter event venue">
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
                                     <div class="form-label">About:</div class="form-label">
-                                    <input required class="p-1 form-input" name="about" type="text">
+                                    <textarea required class="p-1 form-input" id="form-about" name="about" type="text" placeholder="Tell something about the event"></textarea>
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
                                     <div class="form-label">Why:</div class="form-label">
-                                    <input required class="p-1 form-input" name="why" type="text">
+                                    <textarea required class="p-1 form-input" id="form-why" name="why" type="text" placeholder="Why we should attent the event"></textarea>
                                 </div>
-                                <div class="d-flex justify-content-between p-2 align-items-center">
-                                    <div class="form-label">Catagery:</div class="form-label">
-                                    <input required class="p-1 form-input" name="catagery" type="text">
+                                <div id="cataDiv" >
+                                    <div class="d-flex justify-content-between p-2 align-items-center">
+                                        <div class="form-label">Catagery:</div class="form-label">
+                                        <select required class="p-1 form-input" name="catagery" id="form-catagery">
+                                            <option value="">Select the catagery</option>
+                                            <cfloop query="#local.catagery#">
+                                                <option value="#local.catagery.cataId#">#local.catagery.catagery#</option>
+                                            </cfloop>
+                                        </select>
+                                        <!---<input required class="p-1 form-input" id="form-catagery" name="catagery" type="text" placeholder="Select the catagery">--->
+                                    </div>
                                 </div>
-                                <div class="d-flex justify-content-between p-2 align-items-center">
-                                    <div class="form-label">Language:</div class="form-label">
-                                    <input required class="p-1 form-input" name="language" type="text">
+                                <div id="langDiv">
+                                    <div class="d-flex justify-content-between p-2 align-items-center">
+                                        <div class="form-label">Language:</div>
+                                        <select required class="p-1 form-input" name="language" id="form-language">
+                                            <option value="">Select the language</option>
+                                            <cfloop query="#local.language#">
+                                                <option value="#local.language.languageId#">#local.language.languages#</option>
+                                            </cfloop>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="d-flex justify-content-between p-2 align-items-center">
-                                    <div class="form-label">Starting Time :</div class="form-label">
-                                    <input required class="p-1 form-input" name="time" type="time">
+                                <div id="timerDiv"> 
+                                    <div class="d-flex justify-content-between p-2 align-items-center">
+                                        <div class="form-label">Starting Time :</div class="form-label">
+                                        <input required class="p-1 form-input" id="form-time" name="time" type="time">
+                                    </div>
                                 </div>
-                                <div class="d-flex justify-content-between p-2 align-items-center">
-                                    <div class="form-label">Event Poster:</div class="form-label">
-                                    <input required class="p-1 form-input" name="poster" type="file">
+                                <div id="posterDiv">
+                                    <div class="d-flex justify-content-between p-2 align-items-center" >
+                                        <div class="form-label">Event Poster:<span class="important">*</span></div class="form-label">
+                                        <input  class="p-1 form-input" id="form-poster" name="poster" type="file">
+                                    </div>
                                 </div>
-                                <div class="d-flex justify-content-between p-2 align-items-center">
-                                    <div class="form-label">Event BG Poster:</div class="form-label">
-                                    <input required class="p-1 form-input" name="bgposter" type="file">
+                                <div id="bgPosterDiv">
+                                    <div class="d-flex justify-content-between p-2 align-items-center" >
+                                        <div class="form-label">Event BG Poster:<span class="important">*</span></div class="form-label">
+                                        <input  class="p-1 form-input" id="form-bgposter" name="bgposter" type="file">
+                                    </div>
                                 </div>
-                                <input id="from-status" type="hidden" name="status" value="True">
+                                <input id="from-eventid" type="hidden" name="eventid">
                                 <div class="d-flex justify-content-center mt-2">
                                     <button name="formsubmit" type="submit" class="btn btn-success">Submit</button>
                                 </div>
                             </form>
-                            
-                            <cfif structKeyExists(form, "formsubmit")>
+                            <cfif structKeyExists(form, "formsubmit") && len(trim(form.eventid)) eq 0> 
                                 <cfinvoke component="Components/event_cred"  method="insertEventValue" fileuploadbg="form.bgposter" fileuploadimg="form.poster" returnvariable="result">
                                     <cfinvokeargument  name="eventname"  value="#form.eventname#"/>
                                     <cfinvokeargument  name="age"  value="#form.age#"/>
@@ -244,14 +267,31 @@
                                     <cfinvokeargument  name="catagery"  value="#form.catagery#"/>
                                     <cfinvokeargument  name="language"  value="#form.language#"/>
                                     <cfinvokeargument  name="time"  value="#form.time#"/>
-                                    <cfinvokeargument  name="likes"  value="25487"/>
-                                    <cfinvokeargument  name="status"  value="#form.status#"/>
+                                </cfinvoke>
+                            <cfelseif structKeyExists(form, "formsubmit") && len(trim(form.eventid)) gt 0>
+                               
+                                <cfinvoke component="Components/event_cred"  method="updateEventById" returnvariable="result">
+                                      
+                                    <cfinvokeargument  name="eventid"  value="#form.eventid#"/>
+                                    <cfinvokeargument  name="eventname"  value="#form.eventname#"/>
+                                    <cfinvokeargument  name="age"  value="#form.age#"/>
+                                    <cfinvokeargument  name="hour"  value="#form.hour#"/>
+                                    <cfinvokeargument  name="fromdate"  value="#form.fromdate#"/>
+                                    <cfinvokeargument  name="todate"  value="#form.todate#"/>
+                                    <cfinvokeargument  name="price"  value="#form.price#"/>
+                                    <cfinvokeargument  name="venue"  value="#form.venue#"/>
+                                    <cfinvokeargument  name="about"  value="#form.about#"/>
+                                    <cfinvokeargument  name="why"  value="#form.why#"/>
+                                    <cfinvokeargument  name="catagery"  value="#form.catagery#"/>
+                                    <cfinvokeargument  name="language"  value="#form.language#"/>
+                                    <cfinvokeargument  name="time"  value="#form.time#"/>
                                 </cfinvoke>
                             </cfif>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </cfoutput>
     <cfinclude template="footer.cfm"/>

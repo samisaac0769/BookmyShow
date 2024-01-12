@@ -132,7 +132,7 @@
                                                     </div>
                                                     <div class="d-flex flex-column mt-3 align-items-start">
                                                         <div class="movie-name text-align-start">#local.qryResponce.eventname#</div>
-                                                        <div class="venue">#local.qryResponce.venue#</div>
+                                                        <div class="venue text-start">#local.qryResponce.venue#</div>
                                                         <div class="catprice">$ #local.qryResponce.price#</div>
                                                     </div>
                                                 </div>

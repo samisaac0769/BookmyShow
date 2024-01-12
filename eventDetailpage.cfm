@@ -53,7 +53,7 @@
                 <div class="d-flex gap-2 align-item-center dateLocation">
                     <cfset local.fromdate = local.event.fromdate>
                     <cfset local.todate = local.event.todate>
-                    <cfif len(local.todate) eq 0>
+                    <cfif len(local.todate) eq 0 || local.fromdate eq local.todate>
                         <span>#DateFormat(local.fromdate,"eee")# #DateFormat(local.fromdate,"dd")# #DateFormat(local.fromdate,"mmm")# #DateFormat(local.fromdate,"yyyy")#</span>
                     <cfelse>
                         <span>#DateFormat(local.fromdate,"eee")# #DateFormat(local.fromdate,"dd")# #DateFormat(local.fromdate,"mmm")# #DateFormat(local.fromdate,"yyyy")#</span>
