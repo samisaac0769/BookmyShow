@@ -8,7 +8,7 @@ $(document).ready(function () {
             url: "Components/theater_cred.cfc?method=getTheaterById",
             type: "post",
             data: {
-                theaterId :theaterid
+                theaterId: theaterid
             },
             success: function (data) {
                 console.log(data);
@@ -18,7 +18,7 @@ $(document).ready(function () {
                 $("#address").text($(data).find("field[name='ADDRESS'] string").text());
             },
             error: function (error) {
-                console.log(">>>>>>> Something went wrong......" + error );
+                console.log(">>>>>>> Something went wrong......" + error);
             }
 
         })
@@ -45,6 +45,99 @@ $(document).ready(function () {
             });
         });
 
+    });
+
+    $("#add-btn").click(function () {
+        $("#theaterFormLabel").text("ADD THEATER:");
+        $("#showTimes").show();
+        $("#add-cloneDiv").show();
+        $("#submitAddBtn").show();
+        $("#submitEditBtn").hide();
+
+
+        $("#submitAddBtn").click(function (e) {
+            // console.log(e);
+            //    e.preventDefault();
+
+            // Get values from all cloned input elements
+            const clonedValues = [];
+            const clonedInputs = document.querySelectorAll(".showtime-input");
+            clonedInputs.forEach(function (input) {
+                clonedValues.push(input.value);
+            });
+
+            var theaterName = $("#form-theatername").val();
+            var location = $("#form-location").val();
+            var address = $("#form-address").val();
+            if (theaterName == "" || location == "" || address == "") {
+                alert("All fields are Required");
+                return false;
+            }
+            else if (clonedValues == "") {
+                alert("Add show time...");
+                return false;
+            }
+
+            var myShowTimeList = clonedValues.join(', ');
+            //document.location.reload();
+
+            $.ajax({
+                url: "Components/theater_cred.cfc?method=insertTheater",
+                type: "post",
+                data: {
+                    theatername: theaterName,
+                    location: location,
+                    address: address,
+                    showTimes: myShowTimeList
+                },
+                success: function (data) {
+                    var extractData = $(data).find("boolean").attr("value");
+                    console.log(extractData);
+                    if (extractData == "true") {
+                        alert("The theater registered successfully...");
+                    }
+                    if (extractData == "false") {
+                        alert("This theater already registered...");
+                    }
+
+                },
+                error: function (error) {
+                    console.log(">>>>error>>>" + error);
+                }
+            });
+        });
+    });
+
+    $(".edit-btn").click(function () {
+        $("#theaterFormLabel").text("EDIT THEATER:")
+        $("#showTimes").hide();
+        $("#add-cloneDiv").hide();
+        $("#submitEditBtn").show();
+        $("#submitAddBtn").hide();
+        var theaterId = $(this).data("theaterid");
+
+        $.ajax({
+            url: "Components/theater_cred.cfc?method=getTheaterById",
+            type: "post",
+            data: {
+                theaterId: theaterId
+            },
+            success: function (data) {
+                console.log(data);
+
+                $("#form-theatername").val($(data).find("field[name='THEATERNAME'] string").text());
+                $("#form-location").val($(data).find("field[name='LOCATION'] string").text());
+                $("#form-address").val($(data).find("field[name='ADDRESS'] string").text());
+                $("#submitEditBtn").click(function (e) {
+                    editTheater(theaterId, e);
+                });
+
+            },
+            error: function (error) {
+                console.log(">>>Something went wrong>>>" + error);
+            }
+
+        });
     });
 
     $("#add-cloneDiv").click(function () {
@@ -94,58 +187,34 @@ $(document).ready(function () {
         }
     });
 
-    $("#submitBtn").click(function () {
-
-        // Get values from all cloned input elements
-        const clonedValues = [];
-        const clonedInputs = document.querySelectorAll(".showtime-input");
-        clonedInputs.forEach(function (input) {
-            clonedValues.push(input.value);
-        });
-
-        if (clonedValues == "") {
-            alert("Add Show Time");
-            return false;
-        }
-
-        var theaterName = $("#form-theatername").val();
-        var location = $("#form-location").val();
-        var address = $("#form-address").val();
-
-        // Display or use the list of values as needed
-        console.log(">>>>" + theaterName);
-        console.log(">>>>" + location);
-        console.log(">>>>" + address);
-        console.log(">>>>" + clonedValues);
-
-        
-        //document.location.reload();
-
-        $.ajax({
-            url: "Components/theater_cred.cfc?method=insertTheater",
-            type: "post",
-            data: {
-                theatername: theaterName,
-                location: location,
-                address: address,
-                showTimes:clonedValues
-            },
-            success: function (data) {
-                console.log(data);
-                var extractData = $(data).find("boolean").attr("value");
-                console.log(extractData);
-
-                if (extractData == "true") {
-                    alert("This theater already registered...");
-                }
-            },
-            error: function (error) {
-                console.log(">>>>error>>>"+ error);
-            }
-        });
-    });
 
 });
+
+function editTheater(theaterId) {
+    var theaterName = $("#form-theatername").val();
+    var location = $("#form-location").val();
+    var address = $("#form-address").val();
+    $.ajax({
+        url: "Components/theater_cred.cfc?method=updateTheater",
+        type: "post",
+        data: {
+            theaterId: theaterId,
+            theatername: theaterName,
+            location: location,
+            address: address
+        },
+        success: function (data) {
+            var extractData = $(data).find("boolean").attr("value");
+            console.log(extractData);
+            if (extractData == "true") {
+                alert("The theater update successfully...");
+            }
+        },
+        error: function (error) {
+            console.log(">>>>error>>>" + error);
+        }
+    });
+}
 
 function clearForm() {
     $("#form-theatername").val("");
@@ -159,22 +228,45 @@ function clearForm() {
 }
 
 function getTime(timesString) {
+    // Convert timesString to an array
     var times = timesString.split(',');
-    console.log(times);
-    var formattedTimes = [];
 
-    for (let index = 0; index < times.length; index++) {
-        const element = times[index].trim();
-        console.log(element);
-        var validDateString = '1970-01-01T' + element + 'Z';
-        var dateTime = new Date(validDateString);
-        var formattedTime = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+    var formattedTimes = times.map(function (element) {
+        // Split the time and take only the hours and minutes
+        var timeParts = element.trim().split(':');
+        var hours = parseInt(timeParts[0], 10);
+        var minutes = parseInt(timeParts[1], 10);
 
-        formattedTimes.push(formattedTime);
-    }
+        // Create a new Date object with the same date but adjusted hours and minutes
+        var dateTime = new Date(1970, 0, 1, hours, minutes);
+
+        // Format the time in 12-hour format with AM/PM indication
+        var formattedTime = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+        return formattedTime;
+    });
 
     // Join the formatted times into a single string
     var result = formattedTimes.join(', ');
 
     return result;
 }
+
+function timeFromISO(timeString) {
+    console.log("<<formate time: " + timeString);
+
+    // Split the time and take only the hours and minutes
+    var timeParts = timeString.trim().split(':');
+
+    // Convert the hours and minutes to numbers
+    var hours = parseInt(timeParts[0], 10);
+    var minutes = parseInt(timeParts[1], 10);
+
+    // Format the hours and minutes to always have two digits
+    hours = hours.toString().padStart(2, '0');
+    minutes = minutes.toString().padStart(2, '0');
+
+    // Return the formatted time as a string
+    return hours + ':' + minutes;
+}
+

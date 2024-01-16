@@ -38,6 +38,7 @@
             <cfif arguments.date neq "" >
                 AND (@FrmDt BETWEEN el.fromdate AND el.todate)
             </cfif>
+                AND el.status = <cfqueryparam value="TRUE" cfsqltype="bit">
             GROUP BY
                 el.eventid, el.eventname, el.eventposter, el.fromdate, el.venue, el.price, ec.catagery
             ORDER BY
