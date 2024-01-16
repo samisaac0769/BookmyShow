@@ -30,7 +30,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="tittle">Movie CRUD</div>
                 <div>
-                    <button class="add">Add Movie</button>
+                    <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="##movieForm">Add Movie</button>
                 </div>
             </div>
             <div class="mt-4">
@@ -143,6 +143,69 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                             <button type="button" id="deletemovie" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade " id="movieForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="theaterFormLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-add">
+                    <div class="modal-content modal-content-add">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="theaterFormLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearForm()" id="form-btn-close"></button>
+                        </div>
+                        <div class="modal-body row">
+                            <form>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Movie Name:</div>
+                                    <input required class="p-1 form-input" id="form-movieName" type="text" placeholder="Enter movie name">
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Location:</div>
+                                    <input required class="p-1 form-input" id="form-location" type="text" placeholder="Enter theater location">
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Address:</div>
+                                    <textarea required class="p-1 form-input" id="form-address" type="number" placeholder="Enter theater address"></textarea>
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Theater Name:</div>
+                                    <input required class="p-1 form-input" id="form-theatername" type="text" placeholder="Enter theater name">
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Location:</div>
+                                    <input required class="p-1 form-input" id="form-location" type="text" placeholder="Enter theater location">
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Address:</div>
+                                    <textarea required class="p-1 form-input" id="form-address" type="number" placeholder="Enter theater address"></textarea>
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Address:</div>
+                                    <textarea required class="p-1 form-input" id="form-address" type="number" placeholder="Enter theater address"></textarea>
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Location:</div>
+                                    <input required class="p-1 form-input" id="form-location" type="text" placeholder="Enter theater location">
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Address:</div>
+                                    <textarea required class="p-1 form-input" id="form-address" type="number" placeholder="Enter theater address"></textarea>
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Address:</div>
+                                    <textarea required class="p-1 form-input" id="form-address" type="number" placeholder="Enter theater address"></textarea>
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Address:</div>
+                                    <textarea required class="p-1 form-input" id="form-address" type="number" placeholder="Enter theater address"></textarea>
+                                </div>
+                                <input id="from-movieId" type="hidden" name="movieId">
+                                <div class="d-flex justify-content-center mt-2">
+                                    <button name="formsubmit" id="submitBtn" type="submit" class="btn btn-success" >Submit</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

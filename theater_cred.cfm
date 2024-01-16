@@ -30,7 +30,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="tittle">Theater CRUD</div>
                 <div>
-                    <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="##theaterForm">Add Theater</button>
+                    <button id="add-btn" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="##theaterForm">Add Theater</button>
                 </div>
             </div>
             <div class="mt-4">
@@ -51,7 +51,7 @@
                                 <td>#local.theaterlist.location#</td>
                                 <td class="alter-btns">
                                     <button class="view-btn" data-theaterid="#local.theaterlist.theaterId#" data-bs-toggle="modal" data-bs-target="##viewpage"><i class="fa-solid fa-eye fa-lg" style="color: ##1522d5;"></i></button>
-                                    <button><i class="fa-solid fa-pen-to-square fa-lg" style="color: ##1bb125;"></i></button>
+                                    <button class="edit-btn" data-theaterid="#local.theaterlist.theaterId#" data-bs-toggle="modal" data-bs-target="##theaterForm"><i class="fa-solid fa-pen-to-square fa-lg" style="color: ##1bb125;"></i></button>
                                     <button class="delete-btn" data-theaterid="#local.theaterlist.theaterId#" data-bs-toggle="modal" data-bs-target="##deletePage"><i class="fa-solid fa-trash fa-lg" style="color: ##f70202;"></i></button>
                                 </td>
                             </tr>
@@ -141,8 +141,8 @@
                                     <div class="form-label">Address:</div>
                                     <textarea required class="p-1 form-input" id="form-address" type="number" placeholder="Enter theater address"></textarea>
                                 </div>
-                                <div class="d-flex justify-content-between p-2 align-items-center">
-                                    <div class="form-label align-top">Show timing:</div>
+                                <div class="d-flex justify-content-between p-2 align-items-center " >
+                                    <div class="form-label align-top" id="showTimes">Show timing:</div>
                                     <div class="d-flex flex-column align-items-center">
                                         <button class="btn btn-outline-primary mb-1" type="button" id="add-cloneDiv">Add</button>
                                         <div id="show-group" style="display: none;">
@@ -154,7 +154,8 @@
                                 
                                 <input id="from-theaterId" type="hidden" name="theaterId">
                                 <div class="d-flex justify-content-center mt-2">
-                                    <button name="formsubmit" id="submitBtn" type="submit" class="btn btn-success" >Submit</button>
+                                    <button name="formsubmit" id="submitAddBtn" type="submit" class="btn btn-success" >Submit</button>
+                                    <button name="formsubmit" id="submitEditBtn" type="submit" class="btn btn-success" >Submit</button>
                                 </div>
                             </form>
                         </div>
