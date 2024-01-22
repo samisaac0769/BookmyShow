@@ -1,4 +1,10 @@
 $(document).ready(function () {
+
+    new MultiSelectTag('genres');
+    new MultiSelectTag('languages');
+    new MultiSelectTag('theaters');
+    new MultiSelectTag('screens');
+
     $(".view-btn").click(function () {
         let movieid = $(this).data("movieid");
         console.log(movieid);
@@ -13,7 +19,7 @@ $(document).ready(function () {
                 console.log(data);
                 let movieimage = $(data).find("field[name='MOVIEPOSTER'] string").text();
                 let path = "Assets/movieposter/" + movieimage;
-                $("#movieposter").attr("src",path);
+                $("#movieposter").attr("src", path);
                 $("#Label").text($(data).find("field[name='MOVIENAME'] string").text());
                 $("#moviename").text($(data).find("field[name='MOVIENAME'] string").text());
                 $("#lang").text($(data).find("field[name='MOVIELANGUAGES'] string").text());
@@ -32,8 +38,8 @@ $(document).ready(function () {
 
                 $("#runtime").text($(data).find("field[name='TIME'] dateTime").text());
                 $("#vote").text($(data).find("field[name='VOTINGS'] number").text());
-                $("#rating").text($(data).find("field[name='RATING'] number").text()+"/10");
-                $("#about").text($(data).find("field[name='ABOUT'] string").text());                
+                $("#rating").text($(data).find("field[name='RATING'] number").text() + "/10");
+                $("#about").text($(data).find("field[name='ABOUT'] string").text());
             },
             error: function (error) {
                 console.log(error);
@@ -64,4 +70,3 @@ $(document).ready(function () {
     });
 });
 
-    

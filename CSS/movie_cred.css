@@ -102,3 +102,7 @@
 .important{
     color: red ;
 }
+
+.mult-select-tag{
+    width: 50% !important;
+}

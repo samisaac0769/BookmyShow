@@ -17,6 +17,10 @@
     <link href="CSS/bootstrap-css.css" rel="stylesheet">
     <script src="JavaScript/bootstrap-js.js"></script>
 
+    <!-- Multi Select plugin -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
+
     <!-- Include Others -->
     <link href="CSS/movie_cred.css" rel="stylesheet">
     <script src="JavaScript/movie-cred.js"></script>
@@ -147,6 +151,7 @@
                     </div>
                 </div>
             </div>
+            <cfobject  name="commonFunction" component="Components/common">
 
             <div class="modal fade " id="movieForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="theaterFormLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-add">
@@ -162,44 +167,73 @@
                                     <input required class="p-1 form-input" id="form-movieName" type="text" placeholder="Enter movie name">
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
-                                    <div class="form-label">Location:</div>
-                                    <input required class="p-1 form-input" id="form-location" type="text" placeholder="Enter theater location">
+                                    <div class="form-label">Run Time:</div>
+                                    <input required class="p-1 form-input" id="form-runTime" type="time" >
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
-                                    <div class="form-label">Address:</div>
-                                    <textarea required class="p-1 form-input" id="form-address" type="number" placeholder="Enter theater address"></textarea>
+                                    <div class="form-label">Release Date:</div>
+                                    <input required class="p-1 form-input" id="form-releDate" type="date">
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
-                                    <div class="form-label">Theater Name:</div>
-                                    <input required class="p-1 form-input" id="form-theatername" type="text" placeholder="Enter theater name">
+                                    <div class="form-label">Certificate:</div>
+                                    <input required class="p-1 form-input" id="form-genres" type="number" placeholder="Enter Genres">
+                                </div>
+                                
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Genres:</div>
+                                    <select name="genres" id="genres" multiple>
+                                        <option value="1">Afghanistan</option>
+                                        <option value="2">Australia</option>
+                                        <option value="3">Germany</option>
+                                        <option value="4">Canada</option>
+                                        <option value="5">Russia</option>
+                                    </select>
+                                </div>
+                                <cfset local.language = commonFunction.getLanguage()>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Languages:</div>
+                                    <select name="languages" id="languages" multiple>
+                                        <option value="2">Australia</option>
+                                        <option value="3">Germany</option>
+                                        <option value="4">Canada</option>
+                                        <option value="5">Russia</option>
+                                    </select>
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
-                                    <div class="form-label">Location:</div>
-                                    <input required class="p-1 form-input" id="form-location" type="text" placeholder="Enter theater location">
+                                    <div class="form-label">Theaters:</div>
+                                    <select name="theaters" id="theaters" multiple>
+                                        <option value="1">Afghanistan</option>
+                                        <option value="2">Australia</option>
+                                        <option value="3">Germany</option>
+                                        <option value="4">Canada</option>
+                                        <option value="5">Russia</option>
+                                    </select>
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
-                                    <div class="form-label">Address:</div>
-                                    <textarea required class="p-1 form-input" id="form-address" type="number" placeholder="Enter theater address"></textarea>
+                                    <div class="form-label">Screens:</div>
+                                    <select name="screens" id="screens" multiple>
+                                        <option value="1">Afghanistan</option>
+                                        <option value="2">Australia</option>
+                                        <option value="3">Germany</option>
+                                        <option value="4">Canada</option>
+                                        <option value="5">Russia</option>
+                                    </select>
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
-                                    <div class="form-label">Address:</div>
-                                    <textarea required class="p-1 form-input" id="form-address" type="number" placeholder="Enter theater address"></textarea>
+                                    <div class="form-label">Cast:</div>
+                                    <input required class="p-1 form-input" id="form-cast" type="number" placeholder="Enter Cast">
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
-                                    <div class="form-label">Location:</div>
-                                    <input required class="p-1 form-input" id="form-location" type="text" placeholder="Enter theater location">
+                                    <div class="form-label">About:</div>
+                                    <textarea required class="p-1 form-input" id="form-about" type="number" placeholder="Tell something about the movie"></textarea>
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
-                                    <div class="form-label">Address:</div>
-                                    <textarea required class="p-1 form-input" id="form-address" type="number" placeholder="Enter theater address"></textarea>
+                                    <div class="form-label">Movie Poster:</div>
+                                    <input required class="p-1 form-input" id="form-MovPoster" type="file" >
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
-                                    <div class="form-label">Address:</div>
-                                    <textarea required class="p-1 form-input" id="form-address" type="number" placeholder="Enter theater address"></textarea>
-                                </div>
-                                <div class="d-flex justify-content-between p-2 align-items-center">
-                                    <div class="form-label">Address:</div>
-                                    <textarea required class="p-1 form-input" id="form-address" type="number" placeholder="Enter theater address"></textarea>
+                                    <div class="form-label">Movie bgPoster:</div>
+                                    <input required class="p-1 form-input" id="form-bgPoster" type="file" >
                                 </div>
                                 <input id="from-movieId" type="hidden" name="movieId">
                                 <div class="d-flex justify-content-center mt-2">
