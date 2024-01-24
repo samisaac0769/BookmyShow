@@ -96,8 +96,8 @@
                                                         <div class="otp-head">
                                                             Verify your Mobile Number
                                                         </div>
-                                                        <div class="otp-sent">
-                                                            Enter OTP sent to <span>+91 8300833265</span>
+                                                        <div class="otp-sent" >
+                                                            Enter OTP sent to <span id="dispNumb"></span>
                                                         </div>
                                                         <div class="d-flex otpField">
                                                             <input type="tel" id="otp1" class="jLBVFy" maxlength="1" oninput="handleInput(this)" onkeydown="handleBackspace(this, event)">

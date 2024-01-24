@@ -13,6 +13,14 @@
 <body>
     <cfinclude  template="nav_bar.cfm">
     <cfinclude  template="slide.cfm">
+    <cfobject name="objBookMyShow" component="Components/nav_bar">
+    <cfset currentURL = "http://#CGI.SERVER_NAME#:#CGI.SERVER_PORT##CGI.SCRIPT_NAME#?#CGI.QUERY_STRING#">
+    <!-- Extract 'code' parameter value from the URL -->
+    <cfset code = "">
+    <cfif StructKeyExists(URL, "code")>
+    <cfset code = URL.code>
+    <cfset local.user=objBookMyShow.getGoogleUserInfo(code)>
+    </cfif>
     <cfoutput>
             <div class="d-flex flex-column mx-5 py-3 gap-5"> 
                 <div class="d-flex flex-column gap-1">

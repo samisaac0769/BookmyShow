@@ -62,16 +62,16 @@
                 )
             </cfquery>
             <cfset local.newTheaterId =insertResult.GENERATEDKEY>
-            <cfdump var="#local.newTheaterId#">
+            
             <cfif len(trim(local.newTheaterId))>
                 <cfloop list="#arguments.showTimes#" index="i">
                     <cfquery name="qryInsertShowTimes">
-                    INSERT INTO theatertiming(theaterId, timing)
-                    VALUES(
-                        <cfqueryparam value="#local.newTheaterId#" cfsqltype="integer">,
-                        <cfqueryparam value="#i#" cfsqltype="cf_sql_time">
-                    )
-                </cfquery>
+                        INSERT INTO theatertiming(theaterId, timing)
+                        VALUES(
+                            <cfqueryparam value="#local.newTheaterId#" cfsqltype="integer">,
+                            <cfqueryparam value="#i#" cfsqltype="cf_sql_time">
+                        )
+                    </cfquery>
                 </cfloop>
             </cfif>
             <cfreturn true>

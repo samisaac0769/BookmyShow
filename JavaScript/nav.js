@@ -49,7 +49,8 @@ $(document).ready(function () {
         $("#loginOtpContent").show();
         // $("#loginFormContent").toggle();
         // $("#loginOtpContent").toggle();
-
+        let mobile = $("#mobileNo").val();
+        $("#dispNumb").text("+91 " + mobile)
         $('#otp1').focus();
         clearInterval(interval);
         let otp = otpGenerater();
@@ -214,6 +215,22 @@ $(document).ready(function () {
             });
         }
     })
+
+
+    $("#gmailLogin").click(function () {
+        $.ajax({
+            url: "Components/nav_bar.cfc?method=signInWithMail",
+            type: "post",
+            success: function (data) {
+                console.log(data);
+                let mailUrl = $(data).find('string').text();
+                window.location.href = mailUrl;
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        })
+    });
 
 });
 

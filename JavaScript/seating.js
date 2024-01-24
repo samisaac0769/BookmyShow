@@ -31,7 +31,7 @@ function selectseat(price, seatCategory, index) {
     var seatdiv = $("#" + seatId);
 
     // prevent selected seat from get select again
-    if (seatdiv.css("background-color") === "rgb(128, 128, 128)") {
+    if (seatdiv.css("background-color") === "rgb(224, 219, 219)") {
         console.log("Seat is already booked. Choose another seat.");
         return;
     }
