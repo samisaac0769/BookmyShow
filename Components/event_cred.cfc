@@ -117,7 +117,6 @@
     </cffunction>  
     
     <cffunction  name="updateEventById" access="public">
-        
         <cfargument default="" name="eventid">
         <cfargument default="" name="eventname">
         <cfargument default="" name="age">
@@ -131,8 +130,6 @@
         <cfargument default="" name="catagery">
         <cfargument default="" name="language">
         <cfargument default="" name="time">
-
-
 
         <cfquery name="qryUpdateEventById">
             UPDATE fullEventList

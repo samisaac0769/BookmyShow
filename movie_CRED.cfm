@@ -18,8 +18,8 @@
     <script src="JavaScript/bootstrap-js.js"></script>
 
     <!-- Multi Select plugin -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
-    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
+    <link rel="stylesheet" href="CSS/multi-select-tag.css">
+    <script src="JavaScript/multi-select-tag.js"></script>
 
     <!-- Include Others -->
     <link href="CSS/movie_cred.css" rel="stylesheet">
@@ -34,7 +34,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="tittle">Movie CRUD</div>
                 <div>
-                    <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="##movieForm">Add Movie</button>
+                    <button id="addMovieBtn" class="btn btn-outline-success" data-bs-toggle="modal" href="##movieForm">Add Movie</button>
                 </div>
             </div>
             <div class="mt-4">
@@ -57,7 +57,7 @@
                                 <td>#local.movielist.relesedate#</td>
                                 <td class="alter-btns">
                                     <button class="view-btn" data-movieid="#local.movielist.movieid#"  data-bs-toggle="modal" data-bs-target="##viewpage"><i class="fa-solid fa-eye fa-lg" style="color: ##1522d5;"></i></button>
-                                    <button><i class="fa-solid fa-pen-to-square fa-lg" style="color: ##1bb125;"></i></button>
+                                    <button class="edit-btn" data-movieid="#local.movielist.movieid#"  data-bs-toggle="modal" data-bs-target="##movieEditForm"><i class="fa-solid fa-pen-to-square fa-lg" style="color: ##1bb125;"></i></button>
                                     <button class="delete-btn" data-movieid="#local.movielist.movieid#" data-bs-toggle="modal" data-bs-target="##deletePage"><i class="fa-solid fa-trash fa-lg" style="color: ##f70202;"></i></button>
                                 </td>
                             </tr>
@@ -151,100 +151,223 @@
                     </div>
                 </div>
             </div>
-            <cfobject  name="commonFunction" component="Components/common">
 
-            <div class="modal fade " id="movieForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="theaterFormLabel" aria-hidden="true">
+            <cfobject  name="commonFunction" component="Components/common">
+            <cfset local.genres = commonFunction.getGeneres()>
+            <cfset local.language = commonFunction.getLanguage()>
+            <cfset local.theater = commonFunction.getTheater()>
+            <cfset local.screen = commonFunction.getScreens()>
+            <cfset local.cast = commonFunction.getCast()>
+            <div class="modal fade " id="movieForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="movieFormLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-add">
                     <div class="modal-content modal-content-add">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="theaterFormLabel">Modal title</h5>
+                            <h5 class="modal-title" id="movieFormLabel">ADD MOVIE</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="clearForm()" id="form-btn-close"></button>
                         </div>
                         <div class="modal-body row">
-                            <form>
+                            <form id="myForm" action="movie_CRED.cfm" method="post" enctype="multipart/form-data">
                                 <div class="d-flex justify-content-between p-2 align-items-center">
                                     <div class="form-label">Movie Name:</div>
-                                    <input required class="p-1 form-input" id="form-movieName" type="text" placeholder="Enter movie name">
+                                    <input class="p-1 form-input" name="movieName" id="form-movieName" type="text" placeholder="Enter movie name">
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
                                     <div class="form-label">Run Time:</div>
-                                    <input required class="p-1 form-input" id="form-runTime" type="time" >
+                                    <input required class="p-1 form-input" name="runTime" id="form-runTime" type="time">
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
                                     <div class="form-label">Release Date:</div>
-                                    <input required class="p-1 form-input" id="form-releDate" type="date">
+                                    <input required class="p-1 form-input" name="releDate" id="form-releDate" type="date">
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
                                     <div class="form-label">Certificate:</div>
-                                    <input required class="p-1 form-input" id="form-genres" type="number" placeholder="Enter Genres">
-                                </div>
-                                
-                                <div class="d-flex justify-content-between p-2 align-items-center">
-                                    <div class="form-label">Genres:</div>
-                                    <select name="genres" id="genres" multiple>
-                                        <option value="1">Afghanistan</option>
-                                        <option value="2">Australia</option>
-                                        <option value="3">Germany</option>
-                                        <option value="4">Canada</option>
-                                        <option value="5">Russia</option>
+                                    <select required class="certificate" name="certificate" id="form-certificate" >
+                                        <option  value="">Select movie certificate</option>
+                                        <option value="A">A</option>
+                                        <option value="U">U</option>
+                                        <option value="UA">UA</option>
                                     </select>
                                 </div>
-                                <cfset local.language = commonFunction.getLanguage()>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Genres:</div>
+                                    <select required name="genres" id="multiGenres" multiple>
+                                        <cfloop query="#local.genres#"> 
+                                            <option value="#local.genres.genresId#">#local.genres.movieGenres#</option>
+                                        </cfloop>
+                                    </select>
+                                </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
                                     <div class="form-label">Languages:</div>
-                                    <select name="languages" id="languages" multiple>
-                                        <option value="2">Australia</option>
-                                        <option value="3">Germany</option>
-                                        <option value="4">Canada</option>
-                                        <option value="5">Russia</option>
+                                    <select required name="language" id="multiLanguage" multiple>
+                                        <cfloop query="#local.language#"> 
+                                            <option value="#local.language.languageId#">#local.language.languages#</option>
+                                        </cfloop>
                                     </select>
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
                                     <div class="form-label">Theaters:</div>
-                                    <select name="theaters" id="theaters" multiple>
-                                        <option value="1">Afghanistan</option>
-                                        <option value="2">Australia</option>
-                                        <option value="3">Germany</option>
-                                        <option value="4">Canada</option>
-                                        <option value="5">Russia</option>
+                                    <select required name="theater" id="multiTheater" multiple>
+                                        <cfloop query="#local.theater#"> 
+                                            <option value="#local.theater.theaterid#">#local.theater.theatername#</option>
+                                        </cfloop>
                                     </select>
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
                                     <div class="form-label">Screens:</div>
-                                    <select name="screens" id="screens" multiple>
-                                        <option value="1">Afghanistan</option>
-                                        <option value="2">Australia</option>
-                                        <option value="3">Germany</option>
-                                        <option value="4">Canada</option>
-                                        <option value="5">Russia</option>
+                                    <select required name="screen" id="multiScreen" multiple>
+                                        <cfloop query="#local.screen#"> 
+                                            <option value="#local.screen.screenId#">#local.screen.screentype#</option>
+                                        </cfloop>
                                     </select>
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
                                     <div class="form-label">Cast:</div>
-                                    <input required class="p-1 form-input" id="form-cast" type="number" placeholder="Enter Cast">
+                                    <select required name="cast" id="multiCast" multiple>
+                                        <cfloop query="#local.cast#"> 
+                                            <option value="#local.cast.castId#">#local.cast.castname#</option>
+                                        </cfloop>
+                                    </select>
                                 </div>
                                 <div class="d-flex justify-content-between p-2 align-items-center">
                                     <div class="form-label">About:</div>
-                                    <textarea required class="p-1 form-input" id="form-about" type="number" placeholder="Tell something about the movie"></textarea>
+                                    <textarea required class="p-1 form-input" name="about" id="form-about" type="number" placeholder="Tell something about the movie"></textarea>
                                 </div>
-                                <div class="d-flex justify-content-between p-2 align-items-center">
-                                    <div class="form-label">Movie Poster:</div>
-                                    <input required class="p-1 form-input" id="form-MovPoster" type="file" >
+                                <div id="movPoster">
+                                    <div class="d-flex justify-content-between p-2 align-items-center">
+                                        <div class="form-label">Movie Poster:</div>
+                                        <input  class="p-1 form-input" name="movPoster" id="form-MovPoster" type="file" accept=".jpg, .jpeg, .png">
+                                    </div>
                                 </div>
-                                <div class="d-flex justify-content-between p-2 align-items-center">
-                                    <div class="form-label">Movie bgPoster:</div>
-                                    <input required class="p-1 form-input" id="form-bgPoster" type="file" >
+                                <div id="bgPoster">
+                                    <div class="d-flex justify-content-between p-2 align-items-center">
+                                        <div class="form-label">Movie bgPoster:</div>
+                                        <input  class="p-1 form-input" name="bgPoster" id="form-bgPoster" type="file" accept=".jpg, .jpeg, .png">
+                                    </div>
                                 </div>
-                                <input id="from-movieId" type="hidden" name="movieId">
+                                <input id="from-movieId" type="hidden" name="movieid">
                                 <div class="d-flex justify-content-center mt-2">
-                                    <button name="formsubmit" id="submitBtn" type="submit" class="btn btn-success" >Submit</button>
+                                    <button name="formsubmit" id="addSubmitBtn" type="submit" class="btn btn-success" >Submit</button>
                                 </div>
                             </form>
-                        </div>
+                            <cfif structKeyExists(form, "formsubmit") && len(trim(form.movieid)) eq 0>
+                                <cfinvoke component="Components/movie_cred"  method="addMovie" fileuploadposter="form.movPoster" fileuploadbg="form.bgPoster">
+                                    <cfinvokeargument  name="movieName"  value="#form.movieName#">
+                                    <cfinvokeargument  name="runTime"  value="#form.runTime#">
+                                    <cfinvokeargument  name="releDate"  value="#form.releDate#">
+                                    <cfinvokeargument  name="certificate"  value="#form.certificate#">
+                                    <cfinvokeargument  name="genres"  value="#form.genres#">
+                                    <cfinvokeargument  name="language"  value="#form.language#">
+                                    <cfinvokeargument  name="theater"  value="#form.theater#">
+                                    <cfinvokeargument  name="screen"  value="#form.screen#">
+                                    <cfinvokeargument  name="cast"  value="#form.cast#">
+                                    <cfinvokeargument  name="about"  value="#form.about#">
+                                </cfinvoke>
+                            </cfif>
+                        </div>  
                     </div>
                 </div>
             </div>
-            
+            <div class="modal fade " id="movieEditForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="movieEditFormLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-add">
+                    <div class="modal-content modal-content-add">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="movieEditFormLabel">EDIT MOVIE</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeEditBtn"></button>
+                        </div>
+                        <div class="modal-body row">
+                            <form action="movie_CRED.cfm" method="post" >
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Movie Name:</div>
+                                    <input class="p-1 form-input" name="editMovieName" id="formEdit-movieName" type="text" placeholder="Enter movie name">
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Run Time:</div>
+                                    <input class="p-1 form-input" name="editRunTime" id="formEdit-runTime" type="time">
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Release Date:</div>
+                                    <input class="p-1 form-input" name="editReleDate" id="formEdit-releDate" type="date">
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Certificate:</div>
+                                    <select class="certificate" name="editCertificate" id="formEdit-certificate" >
+                                        <option  value="">Select movie certificate</option>
+                                        <option value="A">A</option>
+                                        <option value="U">U</option>
+                                        <option value="UA">UA</option>
+                                    </select>
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Genres:</div>
+                                    <select name="editGenres" id="editMultiGenres" multiple>
+                                        <cfloop query="#local.genres#"> 
+                                            <option value="#local.genres.genresId#">#local.genres.movieGenres#</option>
+                                        </cfloop>
+                                    </select>
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Languages:</div>
+                                    <select name="editLanguage" id="editMultiLanguage" multiple>
+                                        <cfloop query="#local.language#"> 
+                                            <option value="#local.language.languageId#">#local.language.languages#</option>
+                                        </cfloop>
+                                    </select>
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Theaters:</div>
+                                    <select name="editTheater" id="editMultiTheater" multiple>
+                                        <cfloop query="#local.theater#"> 
+                                            <option value="#local.theater.theaterid#">#local.theater.theatername#</option>
+                                        </cfloop>
+                                    </select>
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Screens:</div>
+                                    <select name="editScreen" id="editMultiScreen" multiple>
+                                        <cfloop query="#local.screen#"> 
+                                            <option value="#local.screen.screenId#">#local.screen.screentype#</option>
+                                        </cfloop>
+                                    </select>
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">Cast:</div>
+                                    <select name="editCast" id="editMultiCast" multiple>
+                                        <cfloop query="#local.cast#"> 
+                                            <option value="#local.cast.castId#">#local.cast.castname#</option>
+                                        </cfloop>
+                                    </select>
+                                </div>
+                                <div class="d-flex justify-content-between p-2 align-items-center">
+                                    <div class="form-label">About:</div>
+                                    <textarea class="p-1 form-input" name="editAbout" id="formEdit-about" type="number" placeholder="Tell something about the movie"></textarea>
+                                </div>
+                                <input id="fromEdit-movieId" type="hidden" name="editMovieId">
+                                <div class="d-flex justify-content-center mt-2">
+                                    <button name="editFormSubmit" id="editSubmitBtn" type="submit" class="btn btn-success" >Submit</button>
+                                </div>
+                            </form>
+                            <cfif structKeyExists(form, "editFormSubmit") && len(trim(form.editMovieId))>
+                                <cfinvoke component="Components/movie_cred"  method="updateMovieById" returnvariable="result">
+                                    <cfinvokeargument  name="editMovieId"  value="#form.editMovieId#">
+                                    <cfinvokeargument  name="editMovieName"  value="#form.editMovieName#">
+                                    <cfinvokeargument  name="editRunTime"  value="#form.editRunTime#">
+                                    <cfinvokeargument  name="editReleDate"  value="#form.editReleDate#">
+                                    <cfinvokeargument  name="editCertificate"  value="#form.editCertificate#">
+                                    <cfinvokeargument  name="editGenres"  value="#form.editGenres#">
+                                    <cfinvokeargument  name="editLanguage"  value="#form.editLanguage#">
+                                    <cfinvokeargument  name="editTheater"  value="#form.editTheater#">
+                                    <cfinvokeargument  name="editScreen"  value="#form.editScreen#">
+                                    <cfinvokeargument  name="editCast"  value="#form.editCast#">
+                                    <cfinvokeargument  name="editAbout"  value="#form.editAbout#">
+                                </cfinvoke>
+                                <!---<input type="hidden" value="#result#" id="updateResult">
+                                <span>#result#</span>--->
+                            </cfif>
+                            
+                        </div>  
+                    </div>
+                </div>
+            </div>
         </div>
     </cfoutput>
     <cfinclude template="footer.cfm"/>

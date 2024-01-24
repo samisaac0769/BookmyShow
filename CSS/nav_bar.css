@@ -384,9 +384,8 @@ label {
 }
 
 .signupform {
-    background-image: linear-gradient(rgba(0, 255, 76, 0.5), rgba(255, 0, 64, 0.5)), url("../Assets/popcon.jpg");
+    background-image: url("../Assets/popcon.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100vh;
 }
 

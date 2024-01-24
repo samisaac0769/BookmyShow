@@ -269,9 +269,7 @@
                                     <cfinvokeargument  name="time"  value="#form.time#"/>
                                 </cfinvoke>
                             <cfelseif structKeyExists(form, "formsubmit") && len(trim(form.eventid)) gt 0>
-                               
                                 <cfinvoke component="Components/event_cred"  method="updateEventById" returnvariable="result">
-                                      
                                     <cfinvokeargument  name="eventid"  value="#form.eventid#"/>
                                     <cfinvokeargument  name="eventname"  value="#form.eventname#"/>
                                     <cfinvokeargument  name="age"  value="#form.age#"/>

@@ -1,13 +1,13 @@
 <cfcomponent>    
-    <cfset this.name = "BookMyShow"> 
-    <cfset this.applicationTimeout = createTimeSpan(0, 0, 0, 20)/> 
-    <cfset this.sessionManagement = true/> 
-    <cfset this.sessionTimeout = createTimeSpan(0, 0, 0, 10)/> 
-    <cfset this.datasource = "BookMyShow"/>
-    <cfset this.ormenabled = true/>
+    <cfset this.name = "BookMyShow" /> 
+    <cfset this.applicationTimeout = createTimeSpan(0, 2, 0, 0) /> 
+    <cfset this.sessionManagement = true />  
+    <cfset this.sessionTimeout = createTimeSpan(0, 0, 60, 0) /> 
+    <cfset this.datasource = "BookMyShow" />
+    <cfset this.ormenabled = true />
     <cfset this.ormsettings = {} />
     <cfset this.ormsettings.cfclocation = "Components" />
-    <cfset this.ormsettings.dbcreate = "update"/>
+    <cfset this.ormsettings.dbcreate = "update" />
     
     
     <cffunction name="onApplicationStart" returntype="boolean">
